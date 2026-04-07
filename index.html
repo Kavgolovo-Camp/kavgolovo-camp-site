@@ -1,0 +1,2380 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Фитнес-лагерь в Кавголово</title>
+  <style>
+    :root {
+      --bg: #f4efe7;
+      --bg-soft: #eee7dc;
+      --paper: rgba(255,255,255,0.5);
+      --card: rgba(255,255,255,0.62);
+      --text: #2f2925;
+      --muted: #7a6e65;
+      --line: rgba(71, 58, 47, 0.12);
+      --accent: #8a8f68;
+      --accent-deep: #6e7453;
+      --rose: #c9aea3;
+      --gold: #b29a6a;
+      --shadow: 0 18px 60px rgba(77, 56, 35, 0.09);
+      --radius-xl: 34px;
+      --radius-lg: 26px;
+      --radius-md: 20px;
+      --container: 1240px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(201,174,163,0.22), transparent 32%),
+        radial-gradient(circle at 90% 20%, rgba(138,143,104,0.16), transparent 24%),
+        linear-gradient(180deg, #f7f2ea 0%, #f4efe7 48%, #f1eadf 100%);
+      line-height: 1.45;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    main {
+  padding-top: 70px;
+}
+
+    .page-wrap {
+  position: relative;
+  overflow-x: hidden;
+}
+
+    .orb {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(60px);
+      pointer-events: none;
+      opacity: 0.45;
+    }
+
+    .orb.one {
+      width: 260px;
+      height: 260px;
+      background: rgba(201,174,163,0.32);
+      top: 140px;
+      left: -60px;
+    }
+
+    .orb.two {
+      width: 340px;
+      height: 340px;
+      background: rgba(138,143,104,0.18);
+      top: 860px;
+      right: -90px;
+    }
+
+    .orb.three {
+      width: 280px;
+      height: 280px;
+      background: rgba(178,154,106,0.12);
+      bottom: 220px;
+      left: 8%;
+    }
+
+    .container {
+      width: min(calc(100% - 40px), var(--container));
+      margin: 0 auto;
+    }
+
+    .topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 12px 0 0;
+}
+
+.topbar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 18px;
+  border: 0.5px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(244, 239, 231, 0.42);
+  backdrop-filter: blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  box-shadow:
+    0 10px 30px rgba(70, 57, 45, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+
+
+.topbar-head {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+
+.topbar-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex: 1 1 auto;
+}
+
+.mobile-menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(47,41,37,0.1);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.58);
+  color: var(--text);
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.45);
+}
+
+.mobile-menu-toggle svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  transition: transform 0.25s ease;
+}
+
+.topbar-inner.menu-open .mobile-menu-toggle svg {
+  transform: rotate(90deg);
+}
+
+.nav a {
+  color: var(--muted);
+  font-size: 14px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.nav a:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.nav a.active {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.42);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  border: 0.5px solid rgba(255, 255, 255, 0.18);
+}
+
+    .brand {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.brand img {
+  display: block;
+  height: 42px;
+  width: auto;
+}
+
+    .nav {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav a:hover { color: var(--text); }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(47,41,37,0.14);
+      background: rgba(255,255,255,0.58);
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    @media (min-width: 901px) {
+      .topbar-inner {
+        position: relative;
+      }
+
+      .topbar-panel {
+        justify-content: flex-end;
+      }
+
+      .nav {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: max-content;
+        max-width: calc(100% - 320px);
+        margin: 0 auto;
+      }
+
+      .nav-cta {
+        margin-left: auto;
+      }
+    }
+
+    .hero {
+      padding: 44px 0 24px;
+    }
+
+    .hero-shell {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .glass-card {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.55);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-radius: var(--radius-xl);
+    }
+
+    .hero-copy {
+      padding: 34px;
+      min-height: 660px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid rgba(47,41,37,0.09);
+      width: fit-content;
+      background: rgba(255,255,255,0.35);
+    }
+
+    h1, h2, h3, .serif {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+
+    .hero h1 {
+      font-size: clamp(46px, 6vw, 88px);
+      line-height: 0.94;
+      margin-top: 22px;
+      max-width: 10.5ch;
+    }
+
+    .hero-lead {
+      font-size: 18px;
+      line-height: 1.7;
+      max-width: 610px;
+      margin-top: 20px;
+      color: rgba(47,41,37,0.86);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .meta-pill {
+      padding: 12px 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(47,41,37,0.08);
+      background: rgba(255,255,255,0.52);
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 54px;
+      padding: 0 28px;
+      border-radius: 999px;
+      transition: 0.25s ease;
+      font-size: 15px;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(180deg, #949a71 0%, #737954 100%);
+      color: #fff;
+      box-shadow: 0 14px 30px rgba(110, 116, 83, 0.28);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 34px rgba(110, 116, 83, 0.33);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.5);
+      color: var(--text);
+      border: 1px solid rgba(47,41,37,0.1);
+    }
+
+    .hero-note {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 36px;
+    }
+
+    .note-box {
+      padding: 16px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.45);
+      border: 1px solid rgba(47,41,37,0.08);
+    }
+
+    .note-box strong {
+      display: block;
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .hero-visual {
+      padding: 18px;
+      min-height: 660px;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      gap: 16px;
+    }
+
+    .hero-image {
+      position: relative;
+      overflow: hidden;
+      border-radius: calc(var(--radius-xl) - 8px);
+      min-height: 480px;
+      background:
+        linear-gradient(180deg, rgba(40,40,40,0.12), rgba(40,40,40,0.08)),
+        url('https://static.tildacdn.ink/tild6236-3333-4937-b563-326663626330/5c33be12-ac50-4c58-a.png') center/cover no-repeat;
+    }
+
+    .hero-image::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 42%;
+      background: linear-gradient(180deg, rgba(15,15,15,0) 0%, rgba(15,15,15,0.38) 100%);
+    }
+
+    .hero-caption {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      z-index: 1;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: end;
+    }
+
+    .hero-caption .serif {
+      font-size: clamp(28px, 3vw, 46px);
+      line-height: 0.98;
+      max-width: 8ch;
+    }
+
+    .hero-caption p {
+      margin: 0;
+      max-width: 260px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .floating-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .mini-card {
+      padding: 18px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(255,255,255,0.6);
+      min-height: 132px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .mini-card .label,
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid rgba(47, 41, 37, 0.06);
+      background: rgba(255,255,255,0.35);
+      width: fit-content;
+      line-height: 1;
+      margin-bottom: 20px;
+}
+
+    .mini-card strong {
+      font-size: 22px;
+      line-height: 1.08;
+      font-weight: 500;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    section {
+      padding: 42px 0;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1.18fr) minmax(280px, 360px);
+      gap: 40px;
+      align-items: end;
+      margin-bottom: 30px;
+    }
+
+    .section-head > div {
+      min-width: 0;
+    }
+
+    .section-head h2 {
+      font-size: clamp(34px, 4vw, 54px);
+      line-height: 0.98;
+      max-width: none;
+      text-wrap: balance;
+    }
+
+    .section-head p {
+      max-width: none;
+      margin: 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.7;
+      align-self: end;
+      padding-bottom: 6px;
+    }
+
+    .section-head .section-label {
+      margin-bottom: 18px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .info-card,
+    .feature-card,
+    .quote-card,
+    .program-card,
+    .gallery-card,
+    .expert-card,
+    .form-card,
+    .venue-card,
+    .cta-card {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.58);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .info-card,
+    .program-card,
+    .expert-card,
+    .venue-card,
+    .cta-card,
+    .form-card,
+    .quote-card { padding: 28px; }
+
+    .feature-card {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .info-card h3,
+    .feature-card h3,
+    .program-card h3,
+    .expert-card h3,
+    .venue-card h3,
+    .cta-card h3,
+    .form-card h3,
+    .quote-card h3 {
+      font-size: 28px;
+      line-height: 1.08;
+      margin-bottom: 12px;
+    }
+
+    .feature-card .section-label {
+      margin-bottom: 10px;
+    }
+
+    .feature-card h3 {
+      min-height: 0;
+      margin-bottom: 10px;
+    }
+
+    .feature-card > p {
+      margin-bottom: 18px;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .kavgolovo-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .venue-image-stack {
+      display: grid;
+      grid-template-columns: 0.82fr 1fr 1fr;
+      grid-template-rows: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      height: 100%;
+      align-self: stretch;
+    }
+
+.photo-box {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  min-height: 0;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.photo-box::before {
+  display: none;
+}
+
+.photo-1 {
+  grid-column: 1;
+  grid-row: 1;
+  background-image: url('https://static.tildacdn.ink/tild6263-3738-4734-b334-646332313661/XXXL_2.webp');
+}
+
+.photo-2 {
+  grid-column: 1;
+  grid-row: 2;
+  background-image: url('https://static.tildacdn.ink/tild3364-6662-4538-b537-373038626333/XXXL.webp');
+}
+
+.photo-3 {
+  grid-column: 1;
+  grid-row: 3;
+  background-image: url('https://static.tildacdn.ink/tild3339-3934-4165-b665-326465353565/XXXL_1.webp');
+}
+
+.photo-4 {
+  grid-column: 2 / 4;
+  grid-row: 1 / 3;
+  background-image: url('https://static.tildacdn.ink/tild3832-6331-4636-b763-363538633462/833e14ff-35be-4fda-8.png');
+}
+
+.photo-5 {
+  grid-column: 2;
+  grid-row: 3;
+  background-image: url('https://static.tildacdn.ink/tild3865-6137-4734-b432-353136376238/9f8f0cd4-d444-4338-a.png');
+}
+
+.photo-6 {
+  grid-column: 3;
+  grid-row: 3;
+  background-image: url('https://static.tildacdn.ink/tild3337-6239-4538-a334-316636376134/1dc4193a-ba1f-4e74-9.png');
+}
+
+    .feature-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .feature-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .feature-item:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .feature-item .num {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 34px;
+      background: rgba(138,143,104,0.15);
+      color: var(--accent-deep);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .feature-item strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .feature-item p,
+    .feature-card p,
+    .program-card p,
+    .venue-card p,
+    .info-card p,
+    .quote-card p,
+    .expert-card p,
+    .form-card p,
+    .cta-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .days-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .day-card {
+      padding: 22px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.54), rgba(255,255,255,0.44));
+      border: 1px solid rgba(255,255,255,0.56);
+      box-shadow: var(--shadow);
+      min-height: 220px;
+    }
+
+    .day-card .day {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .day-card h3 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .day-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 14px 0 0;
+      display: grid;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .day-card li::before {
+      content: "•";
+      color: var(--accent-deep);
+      margin-right: 8px;
+    }
+
+    .program-shell {
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .program-highlight {
+      display: grid;
+      gap: 18px;
+    }
+
+    .pill-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .soft-pill {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(138,143,104,0.12);
+      color: var(--accent-deep);
+      font-size: 14px;
+      border: 1px solid rgba(138,143,104,0.14);
+    }
+
+    .results-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 22px;
+  align-items: stretch;
+}
+
+.results-card {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: 100%;
+}
+
+.results-intro {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.results-card .bullet-list {
+  margin-top: 22px;
+}
+
+.results-photo {
+  margin-top: auto;
+  min-height: 260px;
+  border-radius: 24px;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(25,25,25,0.06), rgba(25,25,25,0.18)),
+    url('https://static.tildacdn.ink/tild3437-3462-4332-a337-633165373533/6b316e42-5d28-45ae-9.png') center/cover no-repeat;
+}
+
+    .quote-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100%;
+      background:
+        linear-gradient(180deg, rgba(138,143,104,0.14), rgba(255,255,255,0.56));
+    }
+
+    .quote-big {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(32px, 4vw, 54px);
+      line-height: 1.02;
+      max-width: 10ch;
+      margin-bottom: 20px;
+    }
+
+    .bullet-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .bullet {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .bullet:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .bullet-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #989d76 0%, #6f7552 100%);
+      margin-top: 7px;
+      flex: 0 0 10px;
+    }
+
+    .gallery-shell {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
+    }
+
+    .gallery-composition {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 16px;
+      min-height: 580px;
+    }
+
+    .gallery-left,
+    .gallery-right {
+      display: grid;
+      gap: 16px;
+    }
+
+    .gallery-card {
+      position: relative;
+      min-height: 180px;
+      background:
+        linear-gradient(180deg, rgba(31,31,31,0.05), rgba(31,31,31,0.11)),
+        linear-gradient(135deg, #d9d3ca 0%, #f1ece4 100%);
+    }
+
+    .gallery-card.tall { min-height: 378px; }
+    .gallery-card.hero-photo {
+      background:
+        linear-gradient(180deg, rgba(31,31,31,0.06), rgba(31,31,31,0.18)),
+        linear-gradient(135deg, #ddd6cc 0%, #f1ece4 100%);
+    }
+
+    .gallery-card::after {
+      content: attr(data-title);
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      padding: 9px 13px;
+      background: rgba(255,255,255,0.68);
+      border-radius: 999px;
+      font-size: 12px;
+      border: 1px solid rgba(255,255,255,0.56);
+    }
+
+    .experts-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .expert-photo {
+      aspect-ratio: 4 / 5;
+      border-radius: 22px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.58), rgba(255,255,255,0.32));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 18px;
+    }
+
+    .expert-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .who-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .audience-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .audience-item {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.48);
+      border: 1px solid rgba(47,41,37,0.08);
+      color: rgba(47,41,37,0.88);
+      font-size: 15px;
+    }
+
+    .cta-shell {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .cta-card {
+      background:
+        linear-gradient(180deg, rgba(138,143,104,0.14), rgba(255,255,255,0.52));
+    }
+
+    .cta-card h3 {
+      font-size: clamp(34px, 4vw, 58px);
+      line-height: 0.98;
+      max-width: 9ch;
+      margin-bottom: 16px;
+    }
+
+    .cta-checks {
+      display: grid;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .cta-check {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.5);
+      border: 1px solid rgba(47,41,37,0.08);
+      color: rgba(47,41,37,0.86);
+    }
+
+    .form-card form {
+      display: grid;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .yandex-form-wrap {
+      margin-top: 22px;
+    }
+
+    .yandex-form-wrap iframe {
+      width: 100%;
+      min-height: 560px;
+      border: 0;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.62);
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field label {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      border: 1px solid rgba(47,41,37,0.1);
+      background: rgba(255,255,255,0.62);
+      border-radius: 16px;
+      padding: 16px 18px;
+      font: inherit;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: rgba(110,116,83,0.55);
+      box-shadow: 0 0 0 4px rgba(138,143,104,0.12);
+    }
+
+    .disclaimer {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-top: 6px;
+    }
+
+    footer {
+      padding: 18px 0 50px;
+    }
+
+    .footer-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+      flex-wrap: wrap;
+    }
+
+    section[id] {
+      scroll-margin-top: 110px;
+    }
+
+    @media (max-width: 1180px) {
+      .container {
+        width: min(calc(100% - 32px), var(--container));
+      }
+
+      main {
+        padding-top: 64px;
+      }
+
+      .topbar-inner {
+        gap: 16px;
+        padding: 12px 16px;
+      }
+
+      .nav {
+        gap: 14px;
+      }
+
+      .nav a {
+        padding: 7px 10px;
+      }
+
+      .hero-shell,
+      .kavgolovo-grid,
+      .program-shell,
+      .results-grid,
+      .gallery-shell,
+      .cta-shell,
+      .who-grid,
+      .grid-2,
+      .section-head,
+      .days-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-3,
+      .grid-4,
+      .experts-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-copy,
+      .hero-visual,
+      .gallery-card.tall,
+      .gallery-composition {
+        min-height: auto;
+      }
+
+      .hero-copy,
+      .hero-visual,
+      .info-card,
+      .program-card,
+      .expert-card,
+      .venue-card,
+      .cta-card,
+      .form-card,
+      .quote-card,
+      .feature-card {
+        padding: 26px;
+      }
+
+      .hero-copy {
+        gap: 28px;
+      }
+
+      .hero h1,
+      .section-head h2 {
+        max-width: 100%;
+      }
+
+      .section-head {
+        align-items: start;
+        gap: 18px;
+        margin-bottom: 24px;
+      }
+
+      .section-head p {
+        max-width: 100%;
+        padding-bottom: 0;
+        text-align: left !important;
+      }
+
+      .hero-image {
+        min-height: 520px;
+      }
+
+      .hero-caption p {
+        text-align: left !important;
+      }
+
+      .venue-image-stack {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-rows: repeat(3, 180px);
+      }
+
+      .photo-box {
+        min-height: 180px;
+      }
+
+      .results-photo {
+        min-height: 300px;
+      }
+
+
+      .hero-note {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      #about .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .kavgolovo-grid > .venue-image-stack {
+        order: 1;
+      }
+
+      .kavgolovo-grid > .venue-card {
+        order: 2;
+      }
+
+      #results .section-head h2 {
+        max-width: 12ch;
+      }
+
+      .quote-big {
+        max-width: none;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .topbar {
+        position: static;
+        padding-top: 14px;
+      }
+
+      main {
+        padding-top: 12px;
+      }
+
+      .topbar-inner {
+        border-radius: 28px;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .brand img {
+        height: 38px;
+      }
+
+      .nav {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .nav-cta {
+        width: 100%;
+      }
+
+      .hero {
+        padding-top: 16px;
+      }
+
+      .hero-copy,
+      .hero-visual {
+        gap: 22px;
+      }
+
+      .hero h1 {
+        font-size: clamp(40px, 8vw, 64px);
+        line-height: 0.98;
+      }
+
+      .hero-lead {
+        font-size: 17px;
+      }
+
+      .hero-image {
+        min-height: 440px;
+      }
+
+      .hero-caption {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero-caption .serif,
+      .cta-card h3 {
+        max-width: 100%;
+      }
+
+      .mini-card strong,
+      .info-card h3,
+      .feature-card h3,
+      .program-card h3,
+      .expert-card h3,
+      .venue-card h3,
+      .quote-card h3,
+      .form-card h3 {
+        font-size: 25px;
+      }
+
+      .section-head h2,
+      .quote-big {
+        font-size: clamp(32px, 5vw, 46px);
+      }
+
+
+      .topbar-inner {
+        gap: 0;
+      }
+
+      .topbar-head {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .topbar-panel {
+        display: none;
+        width: 100%;
+        margin-top: 14px;
+        padding-top: 14px;
+        border-top: 1px solid rgba(47,41,37,0.08);
+      }
+
+      .topbar-inner.menu-open .topbar-panel {
+        display: grid;
+        gap: 12px;
+        justify-items: center;
+        justify-content: center;
+      }
+
+      .mobile-menu-toggle {
+        display: inline-flex;
+      }
+
+      .nav {
+        width: min(100%, 320px);
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        justify-content: center;
+      }
+
+      .nav a,
+      .nav-cta {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .nav {
+        justify-items: center;
+      }
+
+      .nav a {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        border-radius: 0;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+      }
+
+      .nav a + a {
+        border-top: 1px solid rgba(47,41,37,0.08);
+      }
+      .nav a.active {
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+      }
+
+      .nav-cta {
+        width: min(100%, 320px);
+        margin: 6px auto 0;
+        min-height: 52px;
+        background: linear-gradient(180deg, #9aa072 0%, #737954 100%);
+        color: #fff;
+        border: 0;
+        box-shadow: 0 12px 28px rgba(110, 116, 83, 0.22);
+      }
+
+      .hero-note {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .note-box {
+        min-height: 0;
+      }
+
+      .hero-image {
+        min-height: 500px;
+        background-position: 58% 14%;
+      }
+
+      #results .section-head h2 {
+        font-size: clamp(30px, 5vw, 42px);
+        line-height: 1.03;
+        max-width: none;
+      }
+
+      .quote-big {
+        font-size: clamp(30px, 5.6vw, 42px);
+        line-height: 1.03;
+        max-width: none;
+      }
+    }
+
+    @media (max-width: 680px) {
+      :root {
+        --radius-xl: 28px;
+        --radius-lg: 22px;
+        --radius-md: 18px;
+      }
+
+      body {
+        line-height: 1.5;
+      }
+
+      .orb {
+        filter: blur(44px);
+        opacity: 0.32;
+      }
+
+      .container {
+        width: min(calc(100% - 24px), var(--container));
+      }
+
+      section {
+        padding: 30px 0;
+      }
+
+      .topbar-inner {
+        padding: 14px;
+      }
+
+      .nav {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        width: min(100%, 320px);
+        margin: 0 auto;
+      }
+
+      .nav a,
+      .nav-cta {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .nav a {
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      .nav-cta {
+        width: min(100%, 320px);
+        margin-left: auto;
+        margin-right: auto;
+        background: linear-gradient(180deg, #9aa072 0%, #737954 100%);
+        color: #fff;
+        border: 0;
+        box-shadow: 0 12px 28px rgba(110, 116, 83, 0.22);
+      }
+
+      .hero-copy,
+      .hero-visual,
+      .info-card,
+      .program-card,
+      .expert-card,
+      .venue-card,
+      .cta-card,
+      .form-card,
+      .quote-card,
+      .feature-card {
+        padding: 20px;
+      }
+
+      .eyebrow,
+      .section-label,
+      .mini-card .label {
+        font-size: 10px;
+      }
+
+      .hero h1 {
+        font-size: clamp(36px, 11vw, 52px);
+      }
+
+      .hero-lead {
+        font-size: 16px;
+        line-height: 1.65;
+      }
+
+      .hero-actions,
+      .hero-meta {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .btn {
+        width: 100%;
+        min-height: 52px;
+        padding: 0 20px;
+      }
+
+      .hero-note,
+      .floating-card,
+      .grid-3,
+      .grid-4,
+      .experts-grid,
+      .cta-shell,
+      .who-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .note-box {
+        padding: 15px;
+      }
+
+      .note-box strong {
+        font-size: 18px;
+      }
+
+      .hero-image {
+        min-height: 360px;
+      }
+
+      .hero-caption {
+        left: 18px;
+        right: 18px;
+        bottom: 18px;
+        gap: 12px;
+      }
+
+      .hero-caption .serif {
+        font-size: clamp(24px, 7.5vw, 36px);
+      }
+
+      .hero-caption p {
+        max-width: 100%;
+        font-size: 13px;
+        line-height: 1.55;
+      }
+
+      .feature-item,
+      .bullet,
+      .cta-check,
+      .audience-item {
+        gap: 10px;
+      }
+
+      .feature-item strong,
+      .cta-check,
+      .audience-item {
+        font-size: 15px;
+      }
+
+      .feature-item p,
+      .feature-card p,
+      .program-card p,
+      .venue-card p,
+      .info-card p,
+      .quote-card p,
+      .expert-card p,
+      .form-card p,
+      .cta-card p,
+      .results-intro,
+      .day-card ul {
+        font-size: 14px;
+        line-height: 1.65;
+      }
+
+      .venue-image-stack {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(4, 160px);
+      }
+
+      .photo-1 {
+        grid-column: 1;
+        grid-row: 1;
+      }
+
+      .photo-2 {
+        grid-column: 2;
+        grid-row: 1;
+      }
+
+      .photo-3 {
+        grid-column: 1;
+        grid-row: 2;
+      }
+
+      .photo-4 {
+        grid-column: 1 / 3;
+        grid-row: 3;
+      }
+
+      .photo-5 {
+        grid-column: 1;
+        grid-row: 4;
+      }
+
+      .photo-6 {
+        grid-column: 2;
+        grid-row: 4;
+      }
+
+      .results-photo {
+        min-height: 220px;
+      }
+
+      .expert-photo {
+        aspect-ratio: 16 / 18;
+        margin-bottom: 16px;
+      }
+
+      .field input,
+      .field textarea {
+        padding: 15px 16px;
+      }
+
+      .footer-line {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+
+      .hero-note {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .hero-note .note-box:last-child {
+        grid-column: 1 / -1;
+      }
+
+      .note-box {
+        border-radius: 20px;
+      }
+
+      .hero-image {
+        min-height: 420px;
+        background-position: 60% 12%;
+      }
+
+      .hero-caption .serif {
+        max-width: 11ch;
+      }
+
+      #results .section-head h2 {
+        font-size: clamp(28px, 8vw, 36px);
+        max-width: none;
+      }
+
+      .quote-big {
+        font-size: clamp(28px, 8vw, 36px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav {
+        grid-template-columns: 1fr;
+      }
+
+      .brand img {
+        height: 34px;
+      }
+
+      .hero {
+        padding-top: 10px;
+      }
+
+      .hero-copy,
+      .hero-visual,
+      .info-card,
+      .program-card,
+      .expert-card,
+      .venue-card,
+      .cta-card,
+      .form-card,
+      .quote-card,
+      .feature-card {
+        padding: 18px;
+      }
+
+      .hero h1 {
+        font-size: clamp(34px, 11.5vw, 44px);
+      }
+
+      .section-head h2,
+      .quote-big,
+      .cta-card h3 {
+        font-size: clamp(28px, 9vw, 38px);
+        line-height: 1.02;
+      }
+
+      .mini-card strong,
+      .info-card h3,
+      .feature-card h3,
+      .program-card h3,
+      .expert-card h3,
+      .venue-card h3,
+      .quote-card h3,
+      .form-card h3 {
+        font-size: 22px;
+      }
+
+      .hero-note {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-note .note-box:last-child {
+        grid-column: 1 / -1;
+      }
+
+      .hero-image {
+        min-height: 360px;
+        background-position: 61% 12%;
+      }
+
+      #results .section-head h2 {
+        font-size: clamp(26px, 10vw, 34px);
+        max-width: none;
+      }
+
+
+      #results .section-head {
+        margin-bottom: 20px;
+      }
+
+      .quote-big {
+        font-size: clamp(26px, 10vw, 34px);
+      }
+
+      .venue-image-stack {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 180px);
+      }
+
+      .photo-1,
+      .photo-2,
+      .photo-3,
+      .photo-4,
+      .photo-5,
+      .photo-6 {
+        grid-column: 1;
+      }
+
+      .photo-1 { grid-row: 1; }
+      .photo-2 { grid-row: 2; }
+      .photo-3 { grid-row: 3; }
+      .photo-4 { grid-row: 4; }
+      .photo-5 { grid-row: 5; }
+      .photo-6 { grid-row: 6; }
+
+      .pill-line,
+      .expert-tags,
+      .hero-actions {
+        gap: 8px;
+      }
+
+      .soft-pill,
+      .meta-pill {
+        font-size: 13px;
+        padding: 9px 12px;
+      }
+
+      .disclaimer {
+        font-size: 11px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+    <div class="orb three"></div>
+
+    <header class="topbar">
+      <div class="container">
+        <div class="topbar-inner">
+          <div class="topbar-head">
+            <a class="brand" href="#top">
+  <img src="https://static.tildacdn.ink/tild6537-6635-4930-b861-643861333931/kavgolovo_camp_logo.svg" alt="Kavgolovo Camp">
+</a>
+            <button class="mobile-menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-nav-panel">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round">
+                <path d="M4 7h16"></path>
+                <path d="M4 12h16"></path>
+                <path d="M4 17h16"></path>
+              </svg>
+            </button>
+          </div>
+          <div class="topbar-panel" id="mobile-nav-panel">
+            <nav class="nav">
+              <a href="#about">О лагере</a>
+              <a href="#venue">Локация</a>
+              <a href="#program">Программа</a>
+              <a href="#results">Результат</a>
+              <a href="#experts">Специалисты</a>
+            </nav>
+            <a class="nav-cta" href="#apply">Оставить заявку</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container">
+          <div class="hero-shell">
+            <div class="hero-copy glass-card">
+              <div>
+                <div class="eyebrow">22 мая — 1 июня • 10 дней</div>
+                <h1>Фитнес-лагерь в Кавголово</h1>
+                <p class="hero-lead">
+                  Эстетичное перезагружение на природе рядом с Петербургом. Тренировки, питание, восстановление, женские практики, сильное окружение и система, которую ты увезёшь с собой в обычную жизнь.
+                </p>
+                <div class="hero-actions">
+                  <a class="btn btn-primary" href="#apply">Оставить заявку</a>
+                  <a class="btn btn-secondary" href="#program">Смотреть программу</a>
+                </div>
+              </div>
+
+              <div class="hero-note">
+                <div class="note-box">
+                  <strong>🌱 3 блока</strong>
+                  <span>тело, питание<br> и mindset</span>
+                </div>
+                <div class="note-box">
+                  <strong>🧘🏻‍♀️ 10 дней</strong>
+                  <span>внятной системы<br> без хаоса</span>
+                </div>
+                <div class="note-box">
+                  <strong>∞ Навсегда</strong>
+                  <span>план тренировок<br> и расчёт БЖУ</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-visual glass-card">
+              <div class="hero-image">
+                <div class="hero-caption">
+                  <div class="serif">Сильное тело. Спокойная голова. Красивый режим.</div>
+                  <p style="text-align: right;">Место, где привычки не ломаются через неделю, а становятся<br> частью жизни.</p>
+                </div>
+              </div>
+              <div class="floating-card">
+                <div class="mini-card">
+                  <span class="label">Что внутри</span>
+                  <strong>Силовые, кардио, растяжка, восстановление</strong>
+                </div>
+                <div class="mini-card">
+                  <span class="label">Дополнительно</span>
+                  <strong>Психолог, нутрициолог, женские практики</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section id="about">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="section-label">О лагере</div>
+              <h2>Не просто похудеть, а выстроить форму</h2>
+            </div>
+            <p style="text-align:right;">
+              <i>За десять дней мы собираем понятную систему без жёстких качелей и откатов.</i>
+            </p>
+          </div>
+
+          <div class="grid-3">
+            <article class="feature-card">
+              <div class="section-label">Тренировки</div>
+              <h3>Нагрузка с умом</h3>
+              <p>Каждый день будет движение, но без бессмысленного истощения. Всё адаптируется под уровень участницы.</p>
+              <div class="feature-list">
+                <div class="feature-item">
+                  <div class="num">1</div>
+                  <div>
+                    <strong>Силовая</strong>
+                    <p>Постановка техники и понятные объяснения каждого движения.</p>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="num">2</div>
+                  <div>
+                    <strong>Кардио</strong>
+                    <p>Активные прогулки, функциональные сессии и работа на выносливость.</p>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="num">3</div>
+                  <div>
+                    <strong>Восстановление</strong>
+                    <p>Растяжка, мягкая мобильность, отдых и забота о теле.</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="feature-card">
+              <div class="section-label">Питание</div>
+              <h3>Нормальная еда без страха</h3>
+              <p>Ты получишь расчёт КБЖУ, меню и понятную систему питания, которую можно использовать потом хоть всю жизнь.</p>
+              <div class="feature-list">
+                <div class="feature-item">
+                  <div class="num">A</div>
+                  <div>
+                    <strong>Расчёт БЖУ</strong>
+                    <p>Под твои цели, параметры и реальный образ жизни.</p>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="num">B</div>
+                  <div>
+                    <strong>Разбор ошибок</strong>
+                    <p>Не теория из интернета, а работа по факту прямо во время лагеря.</p>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="num">C</div>
+                  <div>
+                    <strong>План на потом</strong>
+                    <p>Без переделок, крайностей и вечного старта сначала.</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="feature-card">
+              <div class="section-label">Атмосфера</div>
+              <h3>Женская среда</h3>
+              <p>Мягкие практики, общение, съёмка контента, пикники и окружение, которое помогает держать темп.</p>
+              <div class="feature-list">
+                <div class="feature-item">
+                  <div class="num">✦</div>
+                  <div>
+                    <strong>Женские практики</strong>
+                    <p>Контакт с телом, состоянием и вниманием к себе.</p>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="num">✦</div>
+                  <div>
+                    <strong>Разборы и поддержка</strong>
+                    <p>Честные разговоры и ощущение, что ты не одна в процессе.</p>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="num">✦</div>
+                  <div>
+                    <strong>Красивый контент</strong>
+                    <p>Фото, рилсы, природа и кадры, которые захочется сохранить.</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+
+      <section id="venue">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="section-label">Локация</div>
+              <h2>Кавголово — база на природе</h2>
+            </div>
+          </div>
+
+          <div class="kavgolovo-grid">
+            <article class="venue-card">
+              <h3>Локация, которая работает на твой результат</h3>
+              <p>
+                Мы едем на профессиональную спортивную базу, где всё работает на результат: тренировки, восстановление, воздух, большая территория и питание, которое можно выстроить под твою цель.
+              </p>
+              <div class="pill-line">
+   <span class="soft-pill">Полноценный зал</span>
+   <span class="soft-pill">SPA и восстановление</span>
+   <span class="soft-pill">Лес и озёра</span>
+   <span class="soft-pill">Питание под цель</span>
+ </div>
+
+ <div class="feature-list" style="margin-top: 22px;">
+   <div class="feature-item">
+     <div class="num">01</div>
+     <div>
+       <strong>Полноценный тренажёрный зал</strong>
+       <p>Нормальное оборудование, работа с весами и условия, в которых можно поставить технику и реально прогрессировать.</p>
+     </div>
+   </div>
+
+   <div class="feature-item">
+     <div class="num">02</div>
+     <div>
+       <strong>Восстановление без перегруза</strong>
+       <p>SPA, расслабление после нагрузки и правильный баланс между работой и восстановлением.</p>
+     </div>
+   </div>
+
+   <div class="feature-item">
+     <div class="num">03</div>
+     <div>
+       <strong>Территория и питание работают на тебя</strong>
+       <p>Прогулки, кардио на свежем воздухе, лес, озёра и питание, заранее выстроенное под твои цели и расчёт БЖУ.</p>
+     </div>
+   </div>
+ </div>
+</article>
+
+<div class="venue-image-stack">
+<div class="photo-box photo-1"></div>
+<div class="photo-box photo-2"></div>
+<div class="photo-box photo-3"></div>
+<div class="photo-box photo-4"></div>
+<div class="photo-box photo-5"></div>
+<div class="photo-box photo-6"></div>
+</div>
+          </div>
+        </div>
+      </section>
+
+
+      <section id="program">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="section-label">Программа</div>
+              <h2>Десять дней по понятному плану</h2>
+            </div>
+          </div>
+
+          <div class="program-shell">
+            <article class="program-card">
+              <div class="section-label">Внутри лагеря</div>
+              <h3>Что будет в эти десять дней</h3>
+              <div class="feature-list" style="margin-top: 22px;">
+                <div class="feature-item">
+                  <div class="num">01</div>
+                  <div>
+                    <strong>Тренировки каждый день</strong>
+                    <p>Силовая, кардио и восстановление. Всё адаптируется под уровень, но расслабляться не дадим.</p>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="num">02</div>
+                  <div>
+                    <strong>Питание без крайностей</strong>
+                    <p>Индивидуальный расчёт БЖУ, меню под лагерь и разбор ошибок по факту.</p>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="num">03</div>
+                  <div>
+                    <strong>Эксперты и разборы</strong>
+                    <p>Психолог, нутрициолог, практические встречи и работа с пищевым поведением.</p>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="num">04</div>
+                  <div>
+                    <strong>Атмосфера и восстановление</strong>
+                    <p>Женские практики, пикники, общение, SPA, прогулки и красивые кадры на память.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="pill-line">
+                <span class="soft-pill">Силовая</span>
+                <span class="soft-pill">Кардио</span>
+                <span class="soft-pill">Растяжка</span>
+                <span class="soft-pill">Психолог</span>
+                <span class="soft-pill">Нутрициолог</span>
+                <span class="soft-pill">Женские практики</span>
+              </div>
+            </article>
+
+            <article class="program-card">
+              <div class="section-label">После лагеря</div>
+              <h3>Что останется с тобой</h3>
+              <div class="bullet-list">
+                <div class="bullet">
+                  <div class="bullet-dot"></div>
+                  <p>Тренировочная программа, с которой можно продолжать дальше.</p>
+                </div>
+                <div class="bullet">
+                  <div class="bullet-dot"></div>
+                  <p>Индивидуальный расчёт БЖУ для жизни после лагеря.</p>
+                </div>
+                <div class="bullet">
+                  <div class="bullet-dot"></div>
+                  <p>Понимание, как держать форму без качелей и откатов.</p>
+                </div>
+                <div class="bullet">
+                  <div class="bullet-dot"></div>
+                  <p>Ощущение структуры, контроля и опоры на себя.</p>
+                </div>
+              </div>
+              <div class="pill-line" style="margin-top: 22px;">
+                <span class="soft-pill">План после лагеря</span>
+                <span class="soft-pill">Материалы</span>
+                <span class="soft-pill">Система надолго</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+
+      <section id="results">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="section-label">Результат</div>
+              <h2>Новое состояние, которое останется с тобой</h2>
+            </div>
+          </div>
+
+          <div class="results-grid">
+            <article class="quote-card">
+              <div>
+                <div class="quote-big">Первые результаты появятся уже в лагере. Но самое ценное — ты поймёшь, как их сохранить.</div>
+                <p>
+                  Поэтому внутри есть не только тренировки, но и питание, психология, восстановление, женские практики и сопровождение специалистов.
+                </p>
+              </div>
+              <div class="pill-line">
+                <span class="soft-pill">Контроль над телом</span>
+                <span class="soft-pill">Понятная система</span>
+                <span class="soft-pill">Поддержка и окружение</span>
+              </div>
+            </article>
+
+            <article class="info-card results-card">
+  <div>
+    <div class="section-label">Что останется с тобой</div>
+    <h3>Ты уедешь не на мотивации, а с системой</h3>
+    <p class="results-intro">
+      Не просто минус на весах, а понятный способ держать форму дальше без качелей, срывов и вечного старта сначала.
+    </p>
+
+    <div class="bullet-list">
+      <div class="bullet">
+        <div class="bullet-dot"></div>
+        <p>Тренировочная программа для продолжения после лагеря.</p>
+      </div>
+      <div class="bullet">
+        <div class="bullet-dot"></div>
+        <p>Личный расчёт БЖУ и более спокойное отношение к еде.</p>
+      </div>
+      <div class="bullet">
+        <div class="bullet-dot"></div>
+        <p>Понимание, как держать режим в обычной жизни.</p>
+      </div>
+      <div class="bullet">
+        <div class="bullet-dot"></div>
+        <p>Ощущение контроля, опоры на себя и среды, которая тебя усилила.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="results-photo"></div>
+</article>
+          </div>
+        </div>
+      </section>
+
+
+      <section id="experts">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <div class="section-label">Специалисты</div>
+              <h2>Ведущие лагеря</h2>
+            </div>
+          </div>
+
+          <div class="experts-grid">
+            <article class="expert-card">
+              <div class="expert-photo"><img src="https://static.tildacdn.ink/tild6366-3238-4366-b265-303737363865/2026-04-07_224129.jpg" alt="Галя" style="border-radius: 22px;"></div>
+              <div class="section-label">Ведущая лагеря</div>
+              <h3>Галя</h3>
+              <p>
+                Чемпионка Ленинградской области, вице-чемпионка Санкт-Петербурга и тренер, которая уже помогла большому количеству девушек прийти к заметному результату.
+              </p>
+              <div class="expert-tags">
+                <span class="soft-pill">Силовые тренировки</span>
+                <span class="soft-pill">Техника и форма</span>
+                <span class="soft-pill">Результат с системой</span>
+              </div>
+            </article>
+
+            <article class="expert-card">
+              <div class="expert-photo"><img src="https://static.tildacdn.ink/tild3662-3637-4364-a163-303864393732/2.png" alt="Маша" style="border-radius: 22px;"></div>
+              <div class="section-label">Тренер лагеря</div>
+              <h3>Маша</h3>
+              <p>
+                Тренер, студентка Университета Лесгафта и действующий тренер в зале. Помогает выстраивать рабочую нагрузку, следить за техникой и держать темп лагеря так, чтобы прогресс шёл стабильно и без перегруза.
+              </p>
+              <div class="expert-tags">
+                <span class="soft-pill">Рабочая нагрузка</span>
+                <span class="soft-pill">Контроль техники</span>
+                <span class="soft-pill">Темп без перегруза</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="who-grid">
+            <article class="info-card">
+              <div class="section-label">Кому подойдёт</div>
+              <h3>Для тех, кто хочет встать на рельсы красиво и по-взрослому</h3>
+              <p>
+                Лагерь подойдёт тем, кто устал жить в режиме старт-стоп и хочет наконец собрать устойчивую систему без перегибов.
+              </p>
+              <div class="audience-list">
+                <div class="audience-item">Тем, кто устал начинать с понедельника и снова бросать</div>
+                <div class="audience-item">Тем, кто тренируется, но не видит внятного результата</div>
+                <div class="audience-item">Тем, кому нужен грамотный пинок без трэша и перегруза</div>
+                <div class="audience-item">Тем, кто хочет быстро встать на рельсы и сохранить этот ритм дальше</div>
+              </div>
+            </article>
+
+            <article class="info-card">
+              <div class="section-label">Важно</div>
+              <h3>Это не лагерь, где можно просто полежать и всё изменится само</h3>
+              <p>
+                Здесь будет работа. Но работа понятная, человеческая и выстроенная так, чтобы ты не сломалась на второй день, а наоборот почувствовала опору и вкус к процессу.
+              </p>
+              <div class="feature-list" style="margin-top: 18px;">
+                <div class="feature-item">
+                  <div class="num">→</div>
+                  <div>
+                    <strong>Ты работаешь</strong>
+                    <p>Регулярно двигаешься, учишься технике и включаешься в процесс по-настоящему.</p>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="num">→</div>
+                  <div>
+                    <strong>Ты учишься</strong>
+                    <p>Понимаешь, как питание, тренировки и состояние соединяются в одну систему.</p>
+                  </div>
+                </div>
+                <div class="feature-item">
+                  <div class="num">→</div>
+                  <div>
+                    <strong>Ты меняешь подход</strong>
+                    <p>Уезжаешь не с усталостью, а с ощущением, что теперь можешь продолжать сама.</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="apply">
+        <div class="container">
+          <div class="cta-shell">
+            <article class="cta-card">
+              <div class="section-label">Заявка</div>
+              <p style="font-family: Georgia, Times New Roman, serif; font-weight: 500; font-size: 48px; letter-spacing: -0.02em; line-height: 1.08; margin-bottom:20px; color: #2f2925;">Если чувствуешь, что<br> тебе сюда — значит,<br> тебе сюда <span style="color: #91966e;">❤︎</span></p>
+              <p>
+                Оставь заявку, и вам пришлют подробности, свободные места и всю информацию по участию. Стоимость сообщаем лично в заявке.
+              </p>
+
+              <div class="cta-checks">
+                <div class="cta-check">10 дней на профессиональной спортивной базе в красивой природной локации</div>
+                <div class="cta-check">Тренировочная программа и индивидуальный расчёт БЖУ останутся с тобой после лагеря</div>
+                <div class="cta-check">Тренировки, питание, женские практики, восстановление, лекции и сильное окружение</div>
+              </div>
+
+            </article>
+
+            <article class="form-card" id="application-form">
+              <div class="section-label">Форма</div>
+              <h3>Оставить заявку</h3>
+              <p>
+                Заполни короткую форму, и с тобой свяжутся для деталей.
+              </p>
+
+              <div class="yandex-form-wrap">
+                <script src="https://forms.yandex.ru/_static/embed.js"></script>
+                <iframe
+                  src="https://forms.yandex.ru/u/69d59761f47e732f6168c80d?iframe=1"
+                  frameborder="0"
+                  name="ya-form-69d59761f47e732f6168c80d"
+                  width="100%">
+                </iframe>
+              </div>
+
+              <div class="disclaimer">
+                Нажимая на кнопку, вы оставляете контакты для связи по заявке на фитнес-лагерь в Кавголово.
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-line">
+          <span>Фитнес-лагерь в Кавголово • 22 мая — 1 июня</span>
+          <span>Токсово, учебно-тренировочный центр Кавголово</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+  const navLinks = document.querySelectorAll('.nav a[href^="#"]');
+  const sections = [...navLinks]
+    .map(link => document.querySelector(link.getAttribute('href')))
+    .filter(Boolean);
+
+  const topbarInner = document.querySelector('.topbar-inner');
+  const menuToggle = document.querySelector('.mobile-menu-toggle');
+  const mobileNavPanel = document.querySelector('#mobile-nav-panel');
+  const mobileCta = document.querySelector('.nav-cta');
+
+  const closeMobileMenu = () => {
+    if (!topbarInner || !menuToggle) return;
+    topbarInner.classList.remove('menu-open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+  };
+
+  const openMobileMenu = () => {
+    if (!topbarInner || !menuToggle) return;
+    topbarInner.classList.add('menu-open');
+    menuToggle.setAttribute('aria-expanded', 'true');
+  };
+
+  if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+      const isOpen = topbarInner.classList.contains('menu-open');
+      if (isOpen) {
+        closeMobileMenu();
+      } else {
+        openMobileMenu();
+      }
+    });
+  }
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 900) {
+        closeMobileMenu();
+      }
+    });
+  });
+
+  if (mobileCta) {
+    mobileCta.addEventListener('click', () => {
+      if (window.innerWidth <= 900) {
+        closeMobileMenu();
+      }
+    });
+  }
+
+  const setActiveLink = () => {
+    let currentSection = sections[0];
+
+    sections.forEach(section => {
+      const rect = section.getBoundingClientRect();
+      if (rect.top <= 140) {
+        currentSection = section;
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (currentSection && link.getAttribute('href') === `#${currentSection.id}`) {
+        link.classList.add('active');
+      }
+    });
+  };
+
+  window.addEventListener('scroll', setActiveLink);
+  window.addEventListener('load', setActiveLink);
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 900) {
+      closeMobileMenu();
+    }
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!topbarInner || !menuToggle || window.innerWidth > 900) return;
+    const isOpen = topbarInner.classList.contains('menu-open');
+    if (!isOpen) return;
+    if (!topbarInner.contains(event.target)) {
+      closeMobileMenu();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeMobileMenu();
+    }
+  });
+</script>
+</body>
+</html>
