@@ -4,6 +4,18 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Фитнес-лагерь в Кавголово</title>
+  <link rel="icon" href="https://static.tildacdn.ink/tild3861-6139-4533-a335-326466393539/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="https://static.tildacdn.ink/tild3861-6139-4533-a335-326466393539/favicon.ico" type="image/x-icon" />
+  <meta name="description" content="10 дней на природе рядом с Петербургом: тренировки, питание, восстановление, женские практики и система, которую можно забрать с собой в обычную жизнь" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Фитнес-лагерь в Кавголово" />
+  <meta property="og:description" content="10 дней на природе рядом с Петербургом: тренировки, питание, восстановление, женские практики и система, которую можно забрать с собой в обычную жизнь" />
+  <meta property="og:image" content="https://static.tildacdn.ink/tild3564-3239-4264-a636-393632666163/__2026-04-08__134007.png" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Фитнес-лагерь в Кавголово" />
+  <meta name="twitter:description" content="10 дней на природе рядом с Петербургом: тренировки, питание, восстановление, женские практики и система, которую можно забрать с собой в обычную жизнь" />
+  <meta name="twitter:image" content="https://static.tildacdn.ink/tild3564-3239-4264-a636-393632666163/__2026-04-08__134007.png" />
   <style>
     :root {
       --bg: #f4efe7;
@@ -964,6 +976,13 @@
       align-items: stretch;
     }
 
+    .cta-card,
+    .form-card {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
     .cta-card {
       background:
         linear-gradient(180deg, rgba(138,143,104,0.14), rgba(255,255,255,0.52));
@@ -994,6 +1013,10 @@
       display: grid;
       gap: 14px;
       margin-top: 22px;
+    }
+
+    .form-card .btn[type="submit"] {
+      margin-top: 6px;
     }
 
     .field {
@@ -1055,6 +1078,78 @@
       color: var(--muted);
       line-height: 1.6;
       margin-top: 6px;
+    }
+
+    .contact-box {
+      margin-top: 22px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      display: grid;
+      gap: 12px;
+    }
+
+    .cta-card .contact-box {
+      margin-top: auto;
+    }
+
+    .contact-box-title {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .contact-links {
+      display: grid;
+      gap: 10px;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.48);
+      border: 1px solid rgba(47,41,37,0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .contact-link:hover {
+      transform: translateY(-1px);
+      border-color: rgba(110,116,83,0.22);
+      box-shadow: 0 10px 24px rgba(77, 56, 35, 0.06);
+    }
+
+    .contact-link strong {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .contact-link span {
+      color: var(--muted);
+      font-size: 14px;
+      text-align: right;
+      word-break: break-word;
+    }
+
+    .footer-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      align-items: center;
+    }
+
+    .footer-dev {
+      color: var(--text);
+    }
+
+    .footer-dev a {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
 
     footer {
@@ -2254,11 +2349,24 @@
                 Оставь заявку, и вам пришлют подробности, свободные места и всю информацию по участию. Стоимость сообщаем лично в заявке.
               </p>
 
-              <div class="cta-checks">
-                <div class="cta-check">10 дней на профессиональной спортивной базе в красивой природной локации</div>
-                <div class="cta-check">Тренировочная программа и индивидуальный расчёт БЖУ останутся с тобой после лагеря</div>
-                <div class="cta-check">Тренировки, питание, женские практики, восстановление, лекции и сильное окружение</div>
+              <div class="contact-box">
+                <div class="contact-box-title">Способы связи</div>
+                <div class="contact-links">
+                  <a class="contact-link" href="https://instagram.com/deyak888" target="_blank" rel="noopener noreferrer">
+                    <strong>Instagram</strong>
+                    <span>@deyak888</span>
+                  </a>
+                  <a class="contact-link" href="https://t.me/B_erkana" target="_blank" rel="noopener noreferrer">
+                    <strong>Telegram</strong>
+                    <span>@B_erkana</span>
+                  </a>
+                  <a class="contact-link" href="https://wa.me/79523940721" target="_blank" rel="noopener noreferrer">
+                    <strong>MAX / WhatsApp</strong>
+                    <span>8 952 394 07 21</span>
+                  </a>
+                </div>
               </div>
+
 
             </article>
 
@@ -2277,12 +2385,12 @@
 
                 <div class="field">
                   <label for="telegram">Ваш ник в Telegram</label>
-                  <input id="telegram" name="telegram" type="text" placeholder="@username" required />
+                  <input id="telegram" name="telegram" type="text" placeholder="@username" inputmode="text" autocomplete="off" required />
                 </div>
 
                 <div class="field">
                   <label for="phone">Ваш номер телефона</label>
-                  <input id="phone" name="phone" type="tel" placeholder="+7 (___) ___-__-__" required />
+                  <input id="phone" name="phone" type="tel" placeholder="+7 (___) ___-__-__" inputmode="tel" autocomplete="tel" required />
                 </div>
 
                 <button class="btn btn-primary" type="submit" id="lead-submit">Отправить</button>
@@ -2293,6 +2401,7 @@
               <div class="disclaimer">
                 Нажимая на кнопку, вы оставляете контакты для связи по заявке на фитнес-лагерь в Кавголово.
               </div>
+
             </article>
           </div>
         </div>
@@ -2302,8 +2411,11 @@
     <footer>
       <div class="container">
         <div class="footer-line">
-          <span>Фитнес-лагерь в Кавголово • 22 мая — 1 июня</span>
-          <span>Токсово, учебно-тренировочный центр Кавголово</span>
+          <div class="footer-meta">
+            <span>Фитнес-лагерь в Кавголово • 22 мая — 1 июня</span>
+            <span>Токсово, учебно-тренировочный центр Кавголово</span>
+          </div>
+          <span class="footer-dev">Разработка сайта — <a href="https://t.me/hellaakoski" target="_blank" rel="noopener noreferrer">@hellaakoski</a></span>
         </div>
       </div>
     </footer>
@@ -2404,6 +2516,101 @@
   const leadForm = document.getElementById('lead-form');
   const formStatus = document.getElementById('form-status');
   const submitButton = document.getElementById('lead-submit');
+  const telegramInput = document.getElementById('telegram');
+  const phoneInput = document.getElementById('phone');
+
+  const ensureTelegramPrefix = () => {
+    if (!telegramInput) return;
+    if (!telegramInput.value) {
+      telegramInput.value = '@';
+    } else if (!telegramInput.value.startsWith('@')) {
+      telegramInput.value = '@' + telegramInput.value.replace(/^@+/, '');
+    }
+  };
+
+  const formatTelegramValue = (value) => {
+    const cleanValue = String(value || '')
+      .replace(/\s+/g, '')
+      .replace(/[^a-zA-Z0-9_@]/g, '')
+      .replace(/^@+/, '');
+    return '@' + cleanValue;
+  };
+
+  const formatRussianPhone = (value) => {
+    const digits = String(value || '').replace(/\D/g, '');
+    let normalized = digits;
+
+    if (normalized.startsWith('8')) {
+      normalized = '7' + normalized.slice(1);
+    }
+
+    if (!normalized.startsWith('7')) {
+      normalized = '7' + normalized;
+    }
+
+    normalized = normalized.slice(0, 11);
+
+    const country = normalized.slice(0, 1);
+    const code = normalized.slice(1, 4);
+    const part1 = normalized.slice(4, 7);
+    const part2 = normalized.slice(7, 9);
+    const part3 = normalized.slice(9, 11);
+
+    let result = '+' + country;
+    if (code) result += ' (' + code;
+    if (code.length === 3) result += ')';
+    if (part1) result += ' ' + part1;
+    if (part2) result += '-' + part2;
+    if (part3) result += '-' + part3;
+
+    return result;
+  };
+
+  if (telegramInput) {
+    ensureTelegramPrefix();
+
+    telegramInput.addEventListener('focus', ensureTelegramPrefix);
+
+    telegramInput.addEventListener('input', () => {
+      const formatted = formatTelegramValue(telegramInput.value);
+      telegramInput.value = formatted === '@' ? '@' : formatted;
+    });
+
+    telegramInput.addEventListener('keydown', (event) => {
+      const cursorStart = telegramInput.selectionStart || 0;
+      const cursorEnd = telegramInput.selectionEnd || 0;
+      const isDeletingPrefix = (event.key === 'Backspace' && cursorStart <= 1 && cursorEnd <= 1) ||
+        (event.key === 'Delete' && cursorStart === 0);
+
+      if (isDeletingPrefix) {
+        event.preventDefault();
+      }
+    });
+
+    telegramInput.addEventListener('blur', () => {
+      if (telegramInput.value.trim() === '@') {
+        telegramInput.value = '@';
+      }
+    });
+  }
+
+  if (phoneInput) {
+    phoneInput.addEventListener('input', () => {
+      phoneInput.value = formatRussianPhone(phoneInput.value);
+    });
+
+    phoneInput.addEventListener('focus', () => {
+      if (!phoneInput.value) {
+        phoneInput.value = '+7';
+      }
+    });
+
+    phoneInput.addEventListener('blur', () => {
+      if (phoneInput.value === '+7') {
+        phoneInput.value = '';
+      }
+    });
+  }
 
   const showFormStatus = (message, type) => {
     if (!formStatus) return;
@@ -2430,6 +2637,16 @@
         return;
       }
 
+      if (telegram === '@') {
+        showFormStatus('Укажи корректный ник в Telegram.', 'error');
+        return;
+      }
+
+      if (phone.replace(/\D/g, '').length !== 11) {
+        showFormStatus('Укажи корректный номер телефона РФ.', 'error');
+        return;
+      }
+
       submitButton.disabled = true;
       submitButton.textContent = 'Отправляем...';
       formStatus.className = 'form-status';
@@ -2453,6 +2670,12 @@
         });
 
         leadForm.reset();
+        if (telegramInput) {
+          telegramInput.value = '@';
+        }
+        if (phoneInput) {
+          phoneInput.value = '';
+        }
         showFormStatus('Спасибо. Заявка отправлена, скоро с вами свяжутся.', 'success');
       } catch (error) {
         showFormStatus('Не получилось отправить заявку. Попробуйте еще раз или свяжитесь с нами напрямую.', 'error');
