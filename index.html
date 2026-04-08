@@ -895,7 +895,7 @@
     .gallery-card.hero-photo {
       background:
         linear-gradient(180deg, rgba(31,31,31,0.06), rgba(31,31,31,0.18)),
-        linear-gradient(135deg, #ddd6cc 0%, #f1ece4 100%);
+        url('/mnt/data/296fd142-5bbf-4536-a0e8-981a95059c06.png') center/cover no-repeat;
     }
 
     .gallery-card::after {
@@ -996,18 +996,6 @@
       margin-top: 22px;
     }
 
-    .google-form-wrap {
-      margin-top: 22px;
-    }
-
-    .google-form-wrap iframe {
-      width: 100%;
-      min-height: 720px;
-      border: 0;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.62);
-    }
-
     .field {
       display: grid;
       gap: 8px;
@@ -1035,6 +1023,31 @@
     .field textarea:focus {
       border-color: rgba(110,116,83,0.55);
       box-shadow: 0 0 0 4px rgba(138,143,104,0.12);
+    }
+
+    .form-status {
+      display: none;
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .form-status.is-visible {
+      display: block;
+    }
+
+    .form-status.is-success {
+      background: rgba(138,143,104,0.12);
+      color: var(--accent-deep);
+      border: 1px solid rgba(138,143,104,0.18);
+    }
+
+    .form-status.is-error {
+      background: rgba(201,174,163,0.16);
+      color: #6b4d42;
+      border: 1px solid rgba(201,174,163,0.28);
     }
 
     .disclaimer {
@@ -2256,17 +2269,26 @@
                 Заполни короткую форму, и с тобой свяжутся для деталей.
               </p>
 
-              <div class="google-form-wrap">
-                <iframe
-                  src="https://docs.google.com/forms/d/e/1FAIpQLSf7eK58iR8-l8R-DjhljnUnNzlSrXnRrr_npwlQdvSeAOM7jA/viewform?embedded=true"
-                  width="100%"
-                  height="691"
-                  frameborder="0"
-                  marginheight="0"
-                  marginwidth="0">
-                  Загрузка…
-                </iframe>
-              </div>
+              <form id="lead-form" novalidate>
+                <div class="field">
+                  <label for="name">Ваше имя</label>
+                  <input id="name" name="name" type="text" placeholder="Введите имя" required />
+                </div>
+
+                <div class="field">
+                  <label for="telegram">Ваш ник в Telegram</label>
+                  <input id="telegram" name="telegram" type="text" placeholder="@username" required />
+                </div>
+
+                <div class="field">
+                  <label for="phone">Ваш номер телефона</label>
+                  <input id="phone" name="phone" type="tel" placeholder="+7 (___) ___-__-__" required />
+                </div>
+
+                <button class="btn btn-primary" type="submit" id="lead-submit">Отправить</button>
+              </form>
+
+              <div class="form-status" id="form-status" aria-live="polite"></div>
 
               <div class="disclaimer">
                 Нажимая на кнопку, вы оставляете контакты для связи по заявке на фитнес-лагерь в Кавголово.
@@ -2377,6 +2399,69 @@
       closeMobileMenu();
     }
   });
+
+  const SCRIPT_URL = 'PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
+  const leadForm = document.getElementById('lead-form');
+  const formStatus = document.getElementById('form-status');
+  const submitButton = document.getElementById('lead-submit');
+
+  const showFormStatus = (message, type) => {
+    if (!formStatus) return;
+    formStatus.textContent = message;
+    formStatus.className = 'form-status is-visible ' + (type === 'success' ? 'is-success' : 'is-error');
+  };
+
+  if (leadForm) {
+    leadForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      if (!SCRIPT_URL || SCRIPT_URL.includes('PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE')) {
+        showFormStatus('Сначала вставь ссылку веб-приложения Google Apps Script в код сайта.', 'error');
+        return;
+      }
+
+      const formData = new FormData(leadForm);
+      const name = String(formData.get('name') || '').trim();
+      const telegram = String(formData.get('telegram') || '').trim();
+      const phone = String(formData.get('phone') || '').trim();
+
+      if (!name || !telegram || !phone) {
+        showFormStatus('Заполни все поля формы.', 'error');
+        return;
+      }
+
+      submitButton.disabled = true;
+      submitButton.textContent = 'Отправляем...';
+      formStatus.className = 'form-status';
+      formStatus.textContent = '';
+
+      try {
+        const payload = new URLSearchParams();
+        payload.append('name', name);
+        payload.append('telegram', telegram);
+        payload.append('phone', phone);
+        payload.append('page', window.location.href);
+        payload.append('userAgent', navigator.userAgent);
+
+        await fetch(SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+          },
+          body: payload.toString()
+        });
+
+        leadForm.reset();
+        showFormStatus('Спасибо. Заявка отправлена, скоро с вами свяжутся.', 'success');
+      } catch (error) {
+        showFormStatus('Не получилось отправить заявку. Попробуйте еще раз или свяжитесь с нами напрямую.', 'error');
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Отправить';
+      }
+    });
+  }
 </script>
 </body>
 </html>
