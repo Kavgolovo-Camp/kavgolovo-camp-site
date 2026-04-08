@@ -1080,6 +1080,142 @@
       margin-top: 6px;
     }
 
+
+    .consent-box {
+      margin-top: 4px;
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.48);
+      border: 1px solid rgba(47,41,37,0.08);
+    }
+
+    .consent-label {
+      display: grid;
+      grid-template-columns: 18px 1fr;
+      gap: 12px;
+      align-items: start;
+      cursor: pointer;
+      font-size: 13px;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+
+    .consent-label input {
+      margin: 3px 0 0;
+      width: 18px;
+      height: 18px;
+      accent-color: var(--accent-deep);
+      cursor: pointer;
+    }
+
+    .consent-links {
+      color: var(--text);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+    }
+
+    .consent-links:hover {
+      color: var(--accent-deep);
+    }
+
+    .policy-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      background: rgba(31, 24, 19, 0.42);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .policy-modal.is-open {
+      display: flex;
+    }
+
+    .policy-dialog {
+      width: min(900px, 100%);
+      max-height: min(88vh, 920px);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      border-radius: 28px;
+      background: rgba(247, 242, 234, 0.96);
+      border: 1px solid rgba(255,255,255,0.62);
+      box-shadow: 0 22px 70px rgba(45, 34, 24, 0.24);
+    }
+
+    .policy-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 28px 32px 20px;
+      border-bottom: 1px solid rgba(47,41,37,0.08);
+    }
+
+    .policy-title {
+      margin: 0;
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1.05;
+    }
+
+    .policy-close {
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(47,41,37,0.12);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.72);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 20px;
+      line-height: 1;
+      flex: 0 0 42px;
+    }
+
+    .policy-close:hover {
+      background: rgba(255,255,255,0.92);
+    }
+
+    .policy-content {
+      padding: 0 32px 32px;
+      overflow: auto;
+      color: rgba(47,41,37,0.88);
+    }
+
+    .policy-content p,
+    .policy-content li {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .policy-content p {
+      margin: 0 0 14px;
+    }
+
+    .policy-content h4 {
+      margin: 22px 0 10px;
+      font-size: 18px;
+      line-height: 1.2;
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+    }
+
+    .policy-content ul {
+      margin: 0 0 16px;
+      padding-left: 20px;
+    }
+
+    .policy-content strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
     .contact-box {
       margin-top: 22px;
       padding-top: 20px;
@@ -1135,15 +1271,86 @@
       word-break: break-word;
     }
 
-    .footer-meta {
+    .footer-card {
+      display: grid;
+      gap: 14px;
+      padding: 20px 0 0;
+      border-radius: 0;
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+    }
+
+    .footer-branding {
+      display: grid;
+      gap: 6px;
+    }
+
+    .footer-kicker {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .footer-mainline {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(18px, 2.2vw, 24px);
+      line-height: 1.16;
+      color: rgba(47,41,37,0.88);
+      letter-spacing: -0.02em;
+    }
+
+    .footer-subline {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+      max-width: 860px;
+    }
+
+    .footer-links {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px 18px;
+      gap: 8px 18px;
+      padding-top: 0;
+    }
+
+    .footer-links .consent-links {
+      display: inline-flex;
       align-items: center;
+      justify-content: center;
+      min-height: 0;
+      padding: 0;
+      border-radius: 0;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      color: var(--muted);
+      background: transparent;
+      border: 0;
+      transition: color 0.2s ease, opacity 0.2s ease;
+    }
+
+    .footer-links .consent-links:hover {
+      transform: none;
+      color: var(--text);
+      border-color: transparent;
+      box-shadow: none;
+    }
+
+    .footer-bottomline {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px 24px;
+      align-items: center;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+      flex-wrap: wrap;
     }
 
     .footer-dev {
-      color: var(--text);
+      color: rgba(47,41,37,0.82);
     }
 
     .footer-dev a {
@@ -1153,19 +1360,7 @@
     }
 
     footer {
-      padding: 18px 0 50px;
-    }
-
-    .footer-line {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      align-items: center;
-      padding-top: 18px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 14px;
-      flex-wrap: wrap;
+      padding: 6px 0 42px;
     }
 
     section[id] {
@@ -1694,9 +1889,34 @@
         padding: 15px 16px;
       }
 
-      .footer-line {
+      .policy-modal {
+        padding: 16px;
+      }
+
+      .policy-head {
+        padding: 22px 22px 16px;
+      }
+
+      .policy-content {
+        padding: 0 22px 24px;
+      }
+
+      .footer-card {
+        padding: 16px 0 0;
+      }
+
+      .footer-bottomline {
         flex-direction: column;
         align-items: flex-start;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .footer-links .consent-links {
+        width: auto;
       }
 
 
@@ -1885,7 +2105,7 @@
       <section class="hero">
         <div class="container">
           <div class="hero-shell">
-            <div class="hero-copy glass-card">
+            <div class="hero-copy glass-card cursor-lens-target">
               <div>
                 <div class="eyebrow">22 мая — 1 июня • 10 дней</div>
                 <h1>Фитнес-лагерь в Кавголово</h1>
@@ -2291,7 +2511,7 @@
       <section>
         <div class="container">
           <div class="who-grid">
-            <article class="info-card">
+            <article class="info-card cursor-lens-target">
               <div class="section-label">Кому подойдёт</div>
               <h3>Для тех, кто хочет встать на рельсы красиво и по-взрослому</h3>
               <p>
@@ -2305,7 +2525,7 @@
               </div>
             </article>
 
-            <article class="info-card">
+            <article class="info-card cursor-lens-target">
               <div class="section-label">Важно</div>
               <h3>Это не лагерь, где можно просто полежать и всё изменится само</h3>
               <p>
@@ -2352,9 +2572,9 @@
               <div class="contact-box">
                 <div class="contact-box-title">Способы связи</div>
                 <div class="contact-links">
-                  <a class="contact-link" href="https://instagram.com/deyak888" target="_blank" rel="noopener noreferrer">
+                  <a class="contact-link" href="https://instagram.com/deyak_888" target="_blank" rel="noopener noreferrer">
                     <strong>Instagram</strong>
-                    <span>@deyak888</span>
+                    <span>@deyak_888</span>
                   </a>
                   <a class="contact-link" href="https://t.me/B_erkana" target="_blank" rel="noopener noreferrer">
                     <strong>Telegram</strong>
@@ -2393,13 +2613,25 @@
                   <input id="phone" name="phone" type="tel" placeholder="+7 (___) ___-__-__" inputmode="tel" autocomplete="tel" required />
                 </div>
 
+                <div class="consent-box">
+                  <label class="consent-label" for="consent">
+                    <input id="consent" name="consent" type="checkbox" checked />
+                    <span>
+                      Я соглашаюсь с
+                      <a href="#" class="consent-links" data-modal-open="privacy-modal">политикой конфиденциальности</a>
+                      и
+                      <a href="#" class="consent-links" data-modal-open="consent-modal">согласием на обработку персональных данных</a>
+                    </span>
+                  </label>
+                </div>
+
                 <button class="btn btn-primary" type="submit" id="lead-submit">Отправить</button>
               </form>
 
               <div class="form-status" id="form-status" aria-live="polite"></div>
 
               <div class="disclaimer">
-                Нажимая на кнопку, вы оставляете контакты для связи по заявке на фитнес-лагерь в Кавголово.
+                Отправляя форму, вы оставляете контакты для связи по заявке на фитнес-лагерь в Кавголово.
               </div>
 
             </article>
@@ -2410,15 +2642,96 @@
 
     <footer>
       <div class="container">
-        <div class="footer-line">
-          <div class="footer-meta">
-            <span>Фитнес-лагерь в Кавголово • 22 мая — 1 июня</span>
-            <span>Токсово, учебно-тренировочный центр Кавголово</span>
+        <div class="footer-card">
+          <div class="footer-branding">
+            <div class="footer-kicker">Фитнес-лагерь в Кавголово</div>
+            <div class="footer-mainline">22 мая — 1 июня • учебно-тренировочный центр Кавголово</div>
           </div>
-          <span class="footer-dev">Разработка сайта — <a href="https://t.me/hellaakoski" target="_blank" rel="noopener noreferrer">@hellaakoski</a></span>
+
+          <div class="footer-links">
+            <a href="#" class="consent-links" data-modal-open="privacy-modal">Политика конфиденциальности</a>
+            <a href="#" class="consent-links" data-modal-open="consent-modal">Согласие на обработку персональных данных</a>
+            <a href="#apply" class="consent-links">Оставить заявку</a>
+          </div>
+
+          <div class="footer-bottomline">
+            <span>Тренировки, питание, восстановление и система, которую можно забрать с собой в обычную жизнь.</span>
+            <span class="footer-dev">Разработка сайта — <a href="https://t.me/hellaakoski" target="_blank" rel="noopener noreferrer">@hellaakoski</a></span>
+          </div>
         </div>
       </div>
     </footer>
+  </div>
+
+  <div class="policy-modal" id="privacy-modal" aria-hidden="true">
+    <div class="policy-dialog" role="dialog" aria-modal="true" aria-labelledby="privacy-modal-title">
+      <div class="policy-head">
+        <h3 class="policy-title" id="privacy-modal-title">Политика конфиденциальности</h3>
+        <button class="policy-close" type="button" data-modal-close aria-label="Закрыть">×</button>
+      </div>
+      <div class="policy-content">
+        <p>Настоящая политика действует в отношении данных, которые пользователь оставляет через форму заявки на сайте фитнес-лагеря в Кавголово.</p>
+        <p><strong>Оператор персональных данных:</strong> Деяк Галина Юрьевна, адрес: Ленинградская область, Рощино, Суворовский проезд, 5.</p>
+
+        <h4>1. Какие данные мы получаем</h4>
+        <ul>
+          <li>имя</li>
+          <li>ник в Telegram</li>
+          <li>номер телефона</li>
+          <li>адрес страницы, с которой была отправлена форма</li>
+          <li>технические сведения о браузере и устройстве пользователя, включая userAgent</li>
+        </ul>
+
+        <h4>2. Для чего используются данные</h4>
+        <p>Данные используются для обработки заявки, обратной связи с пользователем, уточнения деталей участия, отправки информации по набору в лагерь и внутреннего учета обращений.</p>
+
+        <h4>3. Как хранятся и обрабатываются данные</h4>
+        <p>Данные обрабатываются в электронном виде и могут передаваться в сервисы, которые используются для приема и хранения заявок, коммуникации с пользователями и организации процесса записи.</p>
+
+        <h4>4. Передача третьим лицам</h4>
+        <p>Данные не публикуются в открытом доступе и не передаются посторонним лицам без необходимости. Передача допускается только в объеме, который нужен для обработки заявки, связи с пользователем и технической поддержки работы сайта.</p>
+
+        <h4>5. Срок хранения</h4>
+        <p>Данные хранятся в течение срока, необходимого для обработки заявки, коммуникации по текущему набору и последующих организационных вопросов, если иное не требуется по закону или по договоренности с пользователем.</p>
+
+        <h4>6. Отзыв и удаление</h4>
+        <p>Пользователь может запросить прекращение обработки и удаление своих данных, написав по контактам, указанным на сайте или в мессенджерах организаторов.</p>
+
+        <h4>7. Изменения политики</h4>
+        <p>Администрация сайта вправе обновлять настоящую политику без отдельного уведомления. Актуальная редакция публикуется на этой странице в формате всплывающего окна.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="policy-modal" id="consent-modal" aria-hidden="true">
+    <div class="policy-dialog" role="dialog" aria-modal="true" aria-labelledby="consent-modal-title">
+      <div class="policy-head">
+        <h3 class="policy-title" id="consent-modal-title">Согласие на обработку персональных данных</h3>
+        <button class="policy-close" type="button" data-modal-close aria-label="Закрыть">×</button>
+      </div>
+      <div class="policy-content">
+        <p>Пользователь, отправляя форму на сайте фитнес-лагеря в Кавголово, подтверждает согласие на обработку своих персональных данных в объеме и на условиях, указанных ниже.</p>
+        <p><strong>Оператор персональных данных:</strong> Деяк Галина Юрьевна, адрес: Ленинградская область, Рощино, Суворовский проезд, 5.</p>
+
+        <h4>1. Перечень данных</h4>
+        <p>Пользователь предоставляет имя, ник в Telegram, номер телефона, а также соглашается на обработку технических данных, автоматически передаваемых при отправке формы, включая адрес страницы и userAgent.</p>
+
+        <h4>2. Цели обработки</h4>
+        <p>Обработка данных осуществляется для связи с пользователем, подтверждения интереса к участию, предоставления информации о программе, стоимости, организационных деталях и свободных местах, а также для ведения внутреннего списка заявок.</p>
+
+        <h4>3. Действия с данными</h4>
+        <p>С данными могут совершаться действия по сбору, записи, систематизации, хранению, уточнению, использованию, передаче в технические сервисы, обезличиванию, удалению и уничтожению.</p>
+
+        <h4>4. Срок действия согласия</h4>
+        <p>Согласие действует с момента отправки формы до достижения целей обработки либо до момента отзыва согласия пользователем.</p>
+
+        <h4>5. Отзыв согласия</h4>
+        <p>Пользователь вправе отозвать согласие в любой момент, направив сообщение по контактам, указанным на сайте. После получения запроса обработка данных прекращается, кроме случаев, когда хранение необходимо по закону или для завершения уже начатой коммуникации по заявке.</p>
+
+        <h4>6. Подтверждение пользователя</h4>
+        <p>Пользователь подтверждает, что предоставляет достоверные сведения и действует добровольно, в своем интересе.</p>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -2506,18 +2819,63 @@
     }
   });
 
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-      closeMobileMenu();
-    }
-  });
-
   const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxPBuKSSJdmNRZ4iSmtCGoLDr-Vv1wTVXsjp3giV5uRmawTQ95LrjBJ7fLzJStb0T2jLw/exec';
   const leadForm = document.getElementById('lead-form');
   const formStatus = document.getElementById('form-status');
   const submitButton = document.getElementById('lead-submit');
   const telegramInput = document.getElementById('telegram');
   const phoneInput = document.getElementById('phone');
+  const consentInput = document.getElementById('consent');
+  const modalOpenButtons = document.querySelectorAll('[data-modal-open]');
+  const modalCloseButtons = document.querySelectorAll('[data-modal-close]');
+  const policyModals = document.querySelectorAll('.policy-modal');
+
+  const openPolicyModal = (modalId) => {
+    const modal = document.getElementById(modalId);
+    if (!modal) return;
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closePolicyModal = (modal) => {
+    if (!modal) return;
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    if (!document.querySelector('.policy-modal.is-open')) {
+      document.body.style.overflow = '';
+    }
+  };
+
+  modalOpenButtons.forEach((button) => {
+    button.addEventListener('click', (event) => {
+      event.preventDefault();
+      const modalId = button.getAttribute('data-modal-open');
+      openPolicyModal(modalId);
+    });
+  });
+
+  modalCloseButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      closePolicyModal(button.closest('.policy-modal'));
+    });
+  });
+
+  policyModals.forEach((modal) => {
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        closePolicyModal(modal);
+      }
+    });
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeMobileMenu();
+      document.querySelectorAll('.policy-modal.is-open').forEach((modal) => closePolicyModal(modal));
+    }
+  });
+
 
   const ensureTelegramPrefix = () => {
     if (!telegramInput) return;
@@ -2637,6 +2995,11 @@
         return;
       }
 
+      if (consentInput && !consentInput.checked) {
+        showFormStatus('Подтверди согласие с политикой и обработкой данных.', 'error');
+        return;
+      }
+
       if (telegram === '@') {
         showFormStatus('Укажи корректный ник в Telegram.', 'error');
         return;
@@ -2657,6 +3020,7 @@
         payload.append('name', name);
         payload.append('telegram', telegram);
         payload.append('phone', phone);
+        payload.append('consent', consentInput && consentInput.checked ? 'yes' : 'no');
         payload.append('page', window.location.href);
         payload.append('userAgent', navigator.userAgent);
 
