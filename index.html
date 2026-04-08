@@ -295,6 +295,84 @@
       background: rgba(255,255,255,0.35);
     }
 
+    .hero-date-badge {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      width: fit-content;
+      padding: 12px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.62);
+      border: 1px solid rgba(47,41,37,0.08);
+      box-shadow: 0 14px 34px rgba(77, 56, 35, 0.06);
+      color: var(--text);
+      overflow: visible;
+      isolation: isolate;
+    }
+
+    .hero-date-badge::before {
+      content: "";
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      width: 150px;
+      height: 34px;
+      border-radius: 999px;
+      transform: translateY(-50%);
+      background: rgba(138,143,104,0.22);
+      filter: blur(18px);
+      opacity: 0.8;
+      z-index: 0;
+      animation: heroDateGlow 3.4s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .hero-date-badge .date-row {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .hero-date-badge .date-main {
+      font-size: 18px;
+      line-height: 1.1;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+
+    .hero-date-badge .date-note {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #99a06f 0%, #81885c 100%);
+      box-shadow: 0 10px 20px rgba(110, 116, 83, 0.22);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #fff;
+      white-space: nowrap;
+      line-height: 1;
+    }
+
+    @keyframes heroDateGlow {
+      0%, 100% {
+        opacity: 0.62;
+        transform: translateY(-50%) scale(0.96);
+      }
+      50% {
+        opacity: 0.95;
+        transform: translateY(-50%) scale(1.04);
+      }
+    }
+
     h1, h2, h3, .serif {
       font-family: Georgia, "Times New Roman", serif;
       font-weight: 500;
@@ -1009,6 +1087,81 @@
       color: rgba(47,41,37,0.86);
     }
 
+    .quick-apply {
+      padding-top: 12px;
+      padding-bottom: 18px;
+    }
+
+    .quick-apply-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1.06fr) minmax(340px, 0.94fr);
+      gap: 28px;
+      align-items: stretch;
+      padding: 30px;
+      background:
+        linear-gradient(180deg, rgba(138,143,104,0.12), rgba(255,255,255,0.52));
+    }
+
+    .quick-apply-copy {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .quick-apply-copy h2 {
+      font-size: clamp(34px, 4.1vw, 50px);
+      line-height: 1.02;
+      max-width: 12ch;
+      margin-bottom: 18px;
+    }
+
+    .quick-apply-copy p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.75;
+      max-width: 56ch;
+    }
+
+    .quick-apply-copy .contact-box {
+      margin-top: auto;
+      padding-top: 18px;
+    }
+
+    .quick-apply-form-panel {
+      padding: 26px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.54);
+      border: 1px solid rgba(255,255,255,0.62);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.44);
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .quick-apply-form-panel h3 {
+      font-size: 30px;
+      line-height: 1.06;
+      margin-bottom: 12px;
+    }
+
+    .quick-apply-form-panel p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .quick-apply-form-panel form {
+      display: grid;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .quick-apply-form-panel .btn[type="submit"] {
+      margin-top: 6px;
+    }
+
     .form-card form {
       display: grid;
       gap: 14px;
@@ -1398,7 +1551,8 @@
       .who-grid,
       .grid-2,
       .section-head,
-      .days-grid {
+      .days-grid,
+      .quick-apply-shell {
         grid-template-columns: 1fr;
       }
 
@@ -1426,6 +1580,15 @@
       .quote-card,
       .feature-card {
         padding: 26px;
+      }
+
+      .quick-apply-shell {
+        padding: 26px;
+        gap: 22px;
+      }
+
+      .quick-apply-copy h2 {
+        max-width: 100%;
       }
 
       .hero-copy {
@@ -1541,6 +1704,22 @@
 
       .hero-lead {
         font-size: 17px;
+      }
+
+      .hero-date-badge {
+        gap: 9px;
+      }
+
+      .hero-date-badge .date-main {
+        font-size: clamp(24px, 5vw, 30px);
+      }
+
+      .quick-apply-copy h2 {
+        font-size: clamp(30px, 5.6vw, 40px);
+      }
+
+      .quick-apply-form-panel h3 {
+        font-size: 27px;
       }
 
       .hero-image {
@@ -1754,6 +1933,51 @@
 
       .hero h1 {
         font-size: clamp(36px, 11vw, 52px);
+      }
+
+      .hero-date-badge {
+        width: 100%;
+        padding: 14px 15px;
+        gap: 9px;
+      }
+
+      .hero-date-badge .date-row {
+        justify-content: space-between;
+        gap: 10px 12px;
+      }
+
+      .hero-date-badge .date-note {
+        font-size: 10px;
+      }
+
+      .hero-date-badge .date-main {
+        font-size: clamp(22px, 7vw, 26px);
+      }
+
+      .quick-apply {
+        padding-top: 4px;
+      }
+
+      .quick-apply-shell {
+        padding: 20px;
+      }
+
+      .quick-apply-copy h2 {
+        font-size: clamp(28px, 8vw, 34px);
+        margin-bottom: 14px;
+      }
+
+      .quick-apply-copy p {
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .quick-apply-form-panel {
+        padding: 20px;
+      }
+
+      .quick-apply-form-panel h3 {
+        font-size: 24px;
       }
 
       .hero-lead {
@@ -1982,6 +2206,23 @@
         font-size: clamp(34px, 11.5vw, 44px);
       }
 
+      .hero-date-badge {
+        gap: 8px;
+      }
+
+      .hero-date-badge .date-row {
+        align-items: flex-start;
+      }
+
+      .quick-apply-shell,
+      .quick-apply-form-panel {
+        padding: 18px;
+      }
+
+      .quick-apply-copy h2 {
+        font-size: clamp(26px, 9vw, 32px);
+      }
+
       .section-head h2,
       .quote-big,
       .cta-card h3 {
@@ -2095,7 +2336,7 @@
               <a href="#results">Результат</a>
               <a href="#experts">Специалисты</a>
             </nav>
-            <a class="nav-cta" href="#apply">Оставить заявку</a>
+            <a class="nav-cta" href="#quick-apply">Оставить заявку</a>
           </div>
         </div>
       </div>
@@ -2107,13 +2348,18 @@
           <div class="hero-shell">
             <div class="hero-copy glass-card cursor-lens-target">
               <div>
-                <div class="eyebrow">22 мая — 1 июня • 10 дней</div>
+                <div class="hero-date-badge" aria-label="Даты заезда: с 22 мая по 1 июня, 10 дней">
+                  <div class="date-row">
+                    <strong class="date-main">22 мая — 1 июня</strong>
+                    <span class="date-note">10 дней</span>
+                  </div>
+                </div>
                 <h1>Фитнес-лагерь в Кавголово</h1>
                 <p class="hero-lead">
                   Эстетичное перезагружение на природе рядом с Петербургом. Тренировки, питание, восстановление, женские практики, сильное окружение и система, которую ты увезёшь с собой в обычную жизнь.
                 </p>
                 <div class="hero-actions">
-                  <a class="btn btn-primary" href="#apply">Оставить заявку</a>
+                  <a class="btn btn-primary" href="#quick-apply">Оставить заявку</a>
                   <a class="btn btn-secondary" href="#program">Смотреть программу</a>
                 </div>
               </div>
@@ -2150,6 +2396,85 @@
                   <span class="label">Дополнительно</span>
                   <strong>Психолог, нутрициолог, женские практики</strong>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+      <section class="quick-apply" id="quick-apply">
+        <div class="container">
+          <div class="quick-apply-shell glass-card">
+            <div class="quick-apply-copy">
+              <div class="section-label">Быстрая заявка</div>
+              <h2>Всего 10 мест — если это про тебя, не затягивай 💫</h2>
+              <p>
+                Это про то, чтобы на несколько дней выбрать себя — и вернуться уже с совсем другим настроением, самочувствием и отношением к себе.
+              </p>
+              <p>
+                Оставляй заявку — пришлем подробности, расскажем по свободным местам и сориентируем по участию. Или пиши напрямую:
+              </p>
+
+              <div class="contact-box">
+                <div class="contact-links">
+                  <a class="contact-link" href="https://instagram.com/deyak_888" target="_blank" rel="noopener noreferrer">
+                    <strong>Instagram</strong>
+                    <span>@deyak_888</span>
+                  </a>
+                  <a class="contact-link" href="https://t.me/B_erkana" target="_blank" rel="noopener noreferrer">
+                    <strong>Telegram</strong>
+                    <span>@B_erkana</span>
+                  </a>
+                  <a class="contact-link" href="https://wa.me/79523940721" target="_blank" rel="noopener noreferrer">
+                    <strong>MAX / WhatsApp</strong>
+                    <span>8 952 394 07 21</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="quick-apply-form-panel">
+              <div class="section-label">Быстрая заявка</div>
+              <h3>Оставить заявку</h3>
+              <p>Заполни короткую форму, и с тобой свяжутся для деталей.</p>
+
+              <form class="js-lead-form" data-form-source="quick-apply" novalidate>
+                <div class="field">
+                  <label for="quick-name">Ваше имя</label>
+                  <input id="quick-name" name="name" type="text" placeholder="Введите имя" required />
+                </div>
+
+                <div class="field">
+                  <label for="quick-telegram">Ваш ник в Telegram</label>
+                  <input id="quick-telegram" name="telegram" type="text" placeholder="@username" inputmode="text" autocomplete="off" data-role="telegram" required />
+                </div>
+
+                <div class="field">
+                  <label for="quick-phone">Ваш номер телефона</label>
+                  <input id="quick-phone" name="phone" type="tel" placeholder="+7 (___) ___-__-__" inputmode="tel" autocomplete="tel" data-role="phone" required />
+                </div>
+
+                <div class="consent-box">
+                  <label class="consent-label" for="quick-consent">
+                    <input id="quick-consent" name="consent" type="checkbox" data-role="consent" checked />
+                    <span>
+                      Я соглашаюсь с
+                      <a href="#" class="consent-links" data-modal-open="privacy-modal">политикой конфиденциальности</a>
+                      и
+                      <a href="#" class="consent-links" data-modal-open="consent-modal">согласием на обработку персональных данных</a>
+                    </span>
+                  </label>
+                </div>
+
+                <button class="btn btn-primary" type="submit" data-role="submit">Отправить</button>
+              </form>
+
+              <div class="form-status" aria-live="polite"></div>
+
+              <div class="disclaimer">
+                Отправляя форму, вы оставляете контакты для связи по заявке на фитнес-лагерь в Кавголово.
               </div>
             </div>
           </div>
@@ -2597,25 +2922,26 @@
                 Заполни короткую форму, и с тобой свяжутся для деталей.
               </p>
 
-              <form id="lead-form" novalidate>
+              
+              <form class="js-lead-form" data-form-source="bottom-apply" novalidate>
                 <div class="field">
-                  <label for="name">Ваше имя</label>
-                  <input id="name" name="name" type="text" placeholder="Введите имя" required />
+                  <label for="bottom-name">Ваше имя</label>
+                  <input id="bottom-name" name="name" type="text" placeholder="Введите имя" required />
                 </div>
 
                 <div class="field">
-                  <label for="telegram">Ваш ник в Telegram</label>
-                  <input id="telegram" name="telegram" type="text" placeholder="@username" inputmode="text" autocomplete="off" required />
+                  <label for="bottom-telegram">Ваш ник в Telegram</label>
+                  <input id="bottom-telegram" name="telegram" type="text" placeholder="@username" inputmode="text" autocomplete="off" data-role="telegram" required />
                 </div>
 
                 <div class="field">
-                  <label for="phone">Ваш номер телефона</label>
-                  <input id="phone" name="phone" type="tel" placeholder="+7 (___) ___-__-__" inputmode="tel" autocomplete="tel" required />
+                  <label for="bottom-phone">Ваш номер телефона</label>
+                  <input id="bottom-phone" name="phone" type="tel" placeholder="+7 (___) ___-__-__" inputmode="tel" autocomplete="tel" data-role="phone" required />
                 </div>
 
                 <div class="consent-box">
-                  <label class="consent-label" for="consent">
-                    <input id="consent" name="consent" type="checkbox" checked />
+                  <label class="consent-label" for="bottom-consent">
+                    <input id="bottom-consent" name="consent" type="checkbox" data-role="consent" checked />
                     <span>
                       Я соглашаюсь с
                       <a href="#" class="consent-links" data-modal-open="privacy-modal">политикой конфиденциальности</a>
@@ -2625,10 +2951,11 @@
                   </label>
                 </div>
 
-                <button class="btn btn-primary" type="submit" id="lead-submit">Отправить</button>
+                <button class="btn btn-primary" type="submit" data-role="submit">Отправить</button>
               </form>
 
-              <div class="form-status" id="form-status" aria-live="polite"></div>
+              <div class="form-status" aria-live="polite"></div>
+
 
               <div class="disclaimer">
                 Отправляя форму, вы оставляете контакты для связи по заявке на фитнес-лагерь в Кавголово.
@@ -2651,7 +2978,7 @@
           <div class="footer-links">
             <a href="#" class="consent-links" data-modal-open="privacy-modal">Политика конфиденциальности</a>
             <a href="#" class="consent-links" data-modal-open="consent-modal">Согласие на обработку персональных данных</a>
-            <a href="#apply" class="consent-links">Оставить заявку</a>
+            <a href="#quick-apply" class="consent-links">Оставить заявку</a>
           </div>
 
           <div class="footer-bottomline">
@@ -2819,13 +3146,9 @@
     }
   });
 
+
   const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxPBuKSSJdmNRZ4iSmtCGoLDr-Vv1wTVXsjp3giV5uRmawTQ95LrjBJ7fLzJStb0T2jLw/exec';
-  const leadForm = document.getElementById('lead-form');
-  const formStatus = document.getElementById('form-status');
-  const submitButton = document.getElementById('lead-submit');
-  const telegramInput = document.getElementById('telegram');
-  const phoneInput = document.getElementById('phone');
-  const consentInput = document.getElementById('consent');
+  const leadForms = document.querySelectorAll('.js-lead-form');
   const modalOpenButtons = document.querySelectorAll('[data-modal-open]');
   const modalCloseButtons = document.querySelectorAll('[data-modal-close]');
   const policyModals = document.querySelectorAll('.policy-modal');
@@ -2876,16 +3199,6 @@
     }
   });
 
-
-  const ensureTelegramPrefix = () => {
-    if (!telegramInput) return;
-    if (!telegramInput.value) {
-      telegramInput.value = '@';
-    } else if (!telegramInput.value.startsWith('@')) {
-      telegramInput.value = '@' + telegramInput.value.replace(/^@+/, '');
-    }
-  };
-
   const formatTelegramValue = (value) => {
     const cleanValue = String(value || '')
       .replace(/\s+/g, '')
@@ -2924,96 +3237,118 @@
     return result;
   };
 
-  if (telegramInput) {
-    ensureTelegramPrefix();
-
-    telegramInput.addEventListener('focus', ensureTelegramPrefix);
-
-    telegramInput.addEventListener('input', () => {
-      const formatted = formatTelegramValue(telegramInput.value);
-      telegramInput.value = formatted === '@' ? '@' : formatted;
-    });
-
-    telegramInput.addEventListener('keydown', (event) => {
-      const cursorStart = telegramInput.selectionStart || 0;
-      const cursorEnd = telegramInput.selectionEnd || 0;
-      const isDeletingPrefix = (event.key === 'Backspace' && cursorStart <= 1 && cursorEnd <= 1) ||
-        (event.key === 'Delete' && cursorStart === 0);
-
-      if (isDeletingPrefix) {
-        event.preventDefault();
-      }
-    });
-
-    telegramInput.addEventListener('blur', () => {
-      if (telegramInput.value.trim() === '@') {
-        telegramInput.value = '@';
-      }
-    });
-  }
-
-  if (phoneInput) {
-    phoneInput.addEventListener('input', () => {
-      phoneInput.value = formatRussianPhone(phoneInput.value);
-    });
-
-    phoneInput.addEventListener('focus', () => {
-      if (!phoneInput.value) {
-        phoneInput.value = '+7';
-      }
-    });
-
-    phoneInput.addEventListener('blur', () => {
-      if (phoneInput.value === '+7') {
-        phoneInput.value = '';
-      }
-    });
-  }
-
-  const showFormStatus = (message, type) => {
-    if (!formStatus) return;
-    formStatus.textContent = message;
-    formStatus.className = 'form-status is-visible ' + (type === 'success' ? 'is-success' : 'is-error');
+  const showFormStatus = (statusNode, message, type) => {
+    if (!statusNode) return;
+    statusNode.textContent = message;
+    statusNode.className = 'form-status is-visible ' + (type === 'success' ? 'is-success' : 'is-error');
   };
 
-  if (leadForm) {
-    leadForm.addEventListener('submit', async (event) => {
+  const resetStatus = (statusNode) => {
+    if (!statusNode) return;
+    statusNode.className = 'form-status';
+    statusNode.textContent = '';
+  };
+
+  leadForms.forEach((form) => {
+    const statusNode = form.parentElement.querySelector('.form-status');
+    const submitButton = form.querySelector('[data-role="submit"]');
+    const telegramInput = form.querySelector('[data-role="telegram"]');
+    const phoneInput = form.querySelector('[data-role="phone"]');
+    const consentInput = form.querySelector('[data-role="consent"]');
+
+    const ensureTelegramPrefix = () => {
+      if (!telegramInput) return;
+      if (!telegramInput.value) {
+        telegramInput.value = '@';
+      } else if (!telegramInput.value.startsWith('@')) {
+        telegramInput.value = '@' + telegramInput.value.replace(/^@+/, '');
+      }
+    };
+
+    if (telegramInput) {
+      ensureTelegramPrefix();
+
+      telegramInput.addEventListener('focus', ensureTelegramPrefix);
+
+      telegramInput.addEventListener('input', () => {
+        const formatted = formatTelegramValue(telegramInput.value);
+        telegramInput.value = formatted === '@' ? '@' : formatted;
+      });
+
+      telegramInput.addEventListener('keydown', (event) => {
+        const cursorStart = telegramInput.selectionStart || 0;
+        const cursorEnd = telegramInput.selectionEnd || 0;
+        const isDeletingPrefix = (event.key === 'Backspace' && cursorStart <= 1 && cursorEnd <= 1) ||
+          (event.key === 'Delete' && cursorStart === 0);
+
+        if (isDeletingPrefix) {
+          event.preventDefault();
+        }
+      });
+
+      telegramInput.addEventListener('blur', () => {
+        if (telegramInput.value.trim() === '@') {
+          telegramInput.value = '@';
+        }
+      });
+    }
+
+    if (phoneInput) {
+      phoneInput.addEventListener('input', () => {
+        phoneInput.value = formatRussianPhone(phoneInput.value);
+      });
+
+      phoneInput.addEventListener('focus', () => {
+        if (!phoneInput.value) {
+          phoneInput.value = '+7';
+        }
+      });
+
+      phoneInput.addEventListener('blur', () => {
+        if (phoneInput.value === '+7') {
+          phoneInput.value = '';
+        }
+      });
+    }
+
+    form.addEventListener('submit', async (event) => {
       event.preventDefault();
 
       if (!SCRIPT_URL || SCRIPT_URL.includes('PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE')) {
-        showFormStatus('Сначала вставь ссылку веб-приложения Google Apps Script в код сайта.', 'error');
+        showFormStatus(statusNode, 'Сначала вставь ссылку веб-приложения Google Apps Script в код сайта.', 'error');
         return;
       }
 
-      const formData = new FormData(leadForm);
+      const formData = new FormData(form);
       const name = String(formData.get('name') || '').trim();
       const telegram = String(formData.get('telegram') || '').trim();
       const phone = String(formData.get('phone') || '').trim();
 
       if (!name || !telegram || !phone) {
-        showFormStatus('Заполни все поля формы.', 'error');
+        showFormStatus(statusNode, 'Заполни все поля формы.', 'error');
         return;
       }
 
       if (consentInput && !consentInput.checked) {
-        showFormStatus('Подтверди согласие с политикой и обработкой данных.', 'error');
+        showFormStatus(statusNode, 'Подтверди согласие с политикой и обработкой данных.', 'error');
         return;
       }
 
       if (telegram === '@') {
-        showFormStatus('Укажи корректный ник в Telegram.', 'error');
+        showFormStatus(statusNode, 'Укажи корректный ник в Telegram.', 'error');
         return;
       }
 
       if (phone.replace(/\D/g, '').length !== 11) {
-        showFormStatus('Укажи корректный номер телефона РФ.', 'error');
+        showFormStatus(statusNode, 'Укажи корректный номер телефона РФ.', 'error');
         return;
       }
 
-      submitButton.disabled = true;
-      submitButton.textContent = 'Отправляем...';
-      formStatus.className = 'form-status';
-      formStatus.textContent = '';
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = 'Отправляем...';
+      }
+      resetStatus(statusNode);
 
       try {
         const payload = new URLSearchParams();
@@ -3023,6 +3358,7 @@
         payload.append('consent', consentInput && consentInput.checked ? 'yes' : 'no');
         payload.append('page', window.location.href);
         payload.append('userAgent', navigator.userAgent);
+        payload.append('formSource', form.dataset.formSource || 'site');
 
         await fetch(SCRIPT_URL, {
           method: 'POST',
@@ -3033,22 +3369,24 @@
           body: payload.toString()
         });
 
-        leadForm.reset();
+        form.reset();
         if (telegramInput) {
           telegramInput.value = '@';
         }
         if (phoneInput) {
           phoneInput.value = '';
         }
-        showFormStatus('Спасибо. Заявка отправлена, скоро с вами свяжутся.', 'success');
+        showFormStatus(statusNode, 'Спасибо. Заявка отправлена, скоро с вами свяжутся.', 'success');
       } catch (error) {
-        showFormStatus('Не получилось отправить заявку. Попробуйте еще раз или свяжитесь с нами напрямую.', 'error');
+        showFormStatus(statusNode, 'Не получилось отправить заявку. Попробуйте еще раз или свяжитесь с нами напрямую.', 'error');
       } finally {
-        submitButton.disabled = false;
-        submitButton.textContent = 'Отправить';
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = 'Отправить';
+        }
       }
     });
-  }
+  });
 </script>
 </body>
 </html>
