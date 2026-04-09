@@ -1087,6 +1087,240 @@
       color: rgba(47,41,37,0.86);
     }
 
+
+
+    .price-section {
+      position: relative;
+      isolation: isolate;
+    }
+
+    .price-shell {
+      position: relative;
+      overflow: hidden;
+      padding: 34px;
+      border-radius: 34px;
+      background:
+        radial-gradient(circle at 12% 18%, rgba(255,255,255,0.5), transparent 28%),
+        radial-gradient(circle at 88% 12%, rgba(201,174,163,0.24), transparent 24%),
+        linear-gradient(135deg, rgba(255,255,255,0.68) 0%, rgba(255,255,255,0.4) 42%, rgba(138,143,104,0.16) 100%);
+      border: 1px solid rgba(255,255,255,0.62);
+      box-shadow:
+        0 32px 80px rgba(77, 56, 35, 0.12),
+        inset 0 1px 0 rgba(255,255,255,0.7);
+    }
+
+    .price-shell::before,
+    .price-shell::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .price-shell::before {
+      width: 360px;
+      height: 360px;
+      top: -180px;
+      right: -120px;
+      background: radial-gradient(circle, rgba(178,154,106,0.28) 0%, rgba(178,154,106,0) 72%);
+      filter: blur(10px);
+    }
+
+    .price-shell::after {
+      width: 300px;
+      height: 300px;
+      left: -120px;
+      bottom: -150px;
+      background: radial-gradient(circle, rgba(138,143,104,0.2) 0%, rgba(138,143,104,0) 72%);
+      filter: blur(12px);
+    }
+
+    .price-shell > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .price-top {
+      display: grid;
+      grid-template-columns: minmax(320px, 0.92fr) minmax(0, 1.08fr);
+      gap: 24px;
+      align-items: stretch;
+      margin-bottom: 20px;
+    }
+
+    .price-hero,
+    .price-note-card,
+    .price-benefit-card {
+      background: rgba(255,255,255,0.44);
+      border: 1px solid rgba(255,255,255,0.6);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .price-hero {
+  padding: 28px;
+  border-radius: 30px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 28px;
+  background:
+    radial-gradient(circle at 14% 18%, rgba(255,255,255,0.6), transparent 30%),
+    linear-gradient(145deg, rgba(255,255,255,0.56) 0%, rgba(255,255,255,0.34) 100%);
+}
+
+    .price-eyebrow-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .price-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #9b806f 0%, #b99b8f 100%);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      box-shadow: 0 14px 28px rgba(126, 93, 79, 0.22);
+      white-space: nowrap;
+    }
+
+    .price-amount-row {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      min-height: 1px;
+    }
+
+    .price-amount {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(65px, 8.8vw, 110px);
+      line-height: 0.88;
+      letter-spacing: -0.055em;
+      color: var(--text);
+      text-wrap: balance;
+    }
+
+    .price-unit {
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.64);
+      border: 1px solid rgba(47,41,37,0.08);
+      color: rgba(47,41,37,0.72);
+      font-size: 16px;
+      font-weight: 500;
+      margin-top: 12px;
+    }
+
+    .price-note-card {
+      padding: 32px;
+      border-radius: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      min-width: 0;
+      background:
+        radial-gradient(circle at 88% 20%, rgba(201,174,163,0.14), transparent 24%),
+        linear-gradient(145deg, rgba(255,255,255,0.56) 0%, rgba(255,255,255,0.36) 100%);
+    }
+
+    .price-note-top {
+      gap: 18px;
+    }
+
+    .price-note-label {
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .price-highlight {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      max-width: 100%;
+      padding: 16px 18px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(47,41,37,0.08);
+      box-shadow: 0 18px 36px rgba(77, 56, 35, 0.08);
+      font-size: clamp(24px, 3.2vw, 34px);
+      line-height: 1.18;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .price-note-card p {
+      margin: 0;
+      color: rgba(47,41,37,0.82);
+      font-size: clamp(15px, 2vw, 21px);
+      line-height: 1.48;
+    }
+
+    .price-inline-strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .price-benefits {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .price-benefit-card {
+      position: relative;
+      padding: 24px;
+      border-radius: 26px;
+      min-height: 100%;
+    }
+
+    .price-benefit-card::before {
+      content: "";
+      position: absolute;
+      top: 20px;
+      left: 24px;
+      width: 52px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(178,154,106,0.9) 0%, rgba(138,143,104,0.55) 100%);
+    }
+
+    .price-benefit-card .section-label {
+      margin-top: 18px;
+      margin-bottom: 12px;
+      background: rgba(255,255,255,0.44);
+    }
+
+    .price-benefit-card h3 {
+      font-size: 30px;
+      line-height: 1.06;
+      margin-bottom: 12px;
+    }
+
+    .price-benefit-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.72;
+    }
+
     .quick-apply {
       padding-top: 12px;
       padding-bottom: 18px;
@@ -1556,6 +1790,12 @@
         grid-template-columns: 1fr;
       }
 
+
+      .price-top,
+      .price-benefits {
+        grid-template-columns: 1fr;
+      }
+
       .grid-3,
       .grid-4,
       .experts-grid {
@@ -1962,6 +2202,40 @@
         padding: 20px;
       }
 
+
+      .price-shell {
+        padding: 20px;
+        border-radius: 26px;
+      }
+
+      .price-hero,
+      .price-note-card,
+      .price-benefit-card {
+        padding: 20px;
+      }
+
+      .price-eyebrow-row {
+        margin-bottom: 18px;
+      }
+
+      .price-amount-row {
+        gap: 12px;
+        margin-bottom: 14px;
+      }
+
+      .price-unit {
+        margin-bottom: 4px;
+      }
+
+      .price-lead {
+        font-size: 16px;
+        line-height: 1.68;
+      }
+
+      .price-benefit-card h3 {
+        font-size: 24px;
+      }
+
       .quick-apply-copy h2 {
         font-size: clamp(28px, 8vw, 34px);
         margin-bottom: 14px;
@@ -2335,6 +2609,7 @@
               <a href="#program">Программа</a>
               <a href="#results">Результат</a>
               <a href="#experts">Специалисты</a>
+              <a href="#price">Стоимость</a>
             </nav>
             <a class="nav-cta" href="#quick-apply">Оставить заявку</a>
           </div>
@@ -2884,6 +3159,55 @@
         </div>
       </section>
 
+
+      <section class="price-section" id="price">
+        <div class="container">
+          <div class="price-shell glass-card">
+            <div class="price-top">
+              <article class="price-hero">
+                <div class="price-eyebrow-row">
+                  <div class="section-label">Стоимость</div>
+                  <div class="price-badge">Только на этот заезд</div>
+                </div>
+                <div class="price-amount-row">
+                  <div class="price-amount">5,200 ₽</div>
+                  <div class="price-unit">/ в день</div>
+                </div>
+              </article>
+
+              <article class="price-note-card">
+                <div class="price-note-top">
+                  <div class="section-label">Что входит в эту стоимость</div>
+                  <div><p style=""><span class="price-inline-strong">Одна персональная тренировка с тренером стоит от 3000 ₽</span>. С нами за день ты получаешь <span class="price-inline-strong">три тренировки</span>, а еще трехразовое питание под твои БЖУ, восстановление, психолога, нутрициолога, женские практики и всю среду целиком.
+                    </p>
+                  </div>
+                </div>
+              </article>
+            </div>
+
+            <div class="price-benefits">
+              <article class="price-benefit-card">
+                <div class="section-label">Тренировки</div>
+                <h3>Три тренировки в день</h3>
+                <p>Силовая, кардио и восстановление — не одна сессия, а полноценная работа с телом.</p>
+              </article>
+
+              <article class="price-benefit-card">
+                <div class="section-label">Питание</div>
+                <h3>Трехразовое питание под твои БЖУ</h3>
+                <p>Все уже собрано под задачи и режим. Не надо ничего считать, докупать и собирать по кускам.</p>
+              </article>
+
+              <article class="price-benefit-card">
+                <div class="section-label">Формат целиком</div>
+                <h3>Психолог, нутрициолог, женские практики и среда</h3>
+                <p>Плюс сопровождение, база и весь тот опыт, ради которого сюда вообще хочется ехать.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="apply">
         <div class="container">
           <div class="cta-shell">
@@ -2891,7 +3215,7 @@
               <div class="section-label">Заявка</div>
               <p style="font-family: Georgia, Times New Roman, serif; font-weight: 500; font-size: 48px; letter-spacing: -0.02em; line-height: 1.08; margin-bottom:20px; color: #2f2925;">Если чувствуешь, что<br> тебе сюда — значит,<br> тебе сюда <span style="color: #91966e;">❤︎</span></p>
               <p>
-                Оставь заявку, и вам пришлют подробности, свободные места и всю информацию по участию. Стоимость сообщаем лично в заявке.
+                Оставь заявку, и вам пришлют подробности, свободные места и всю информацию по участию.
               </p>
 
               <div class="contact-box">
@@ -2922,7 +3246,7 @@
                 Заполни короткую форму, и с тобой свяжутся для деталей.
               </p>
 
-              
+
               <form class="js-lead-form" data-form-source="bottom-apply" novalidate>
                 <div class="field">
                   <label for="bottom-name">Ваше имя</label>
@@ -3147,7 +3471,7 @@
   });
 
 
-  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxPDFmXU78L4J9S1AHHvPbZ7O_A5-7oTQHNrd6vIchGXe0g20idgTWaqpBiSZNwrQ77Hw/exec';
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxPBuKSSJdmNRZ4iSmtCGoLDr-Vv1wTVXsjp3giV5uRmawTQ95LrjBJ7fLzJStb0T2jLw/exec';
   const leadForms = document.querySelectorAll('.js-lead-form');
   const modalOpenButtons = document.querySelectorAll('[data-modal-open]');
   const modalCloseButtons = document.querySelectorAll('[data-modal-close]');
